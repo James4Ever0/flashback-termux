@@ -1,0 +1,432 @@
+WINDOW MANAGER DISPLAY CONTENTS (dumpsys window displays)
+  mLastOrientationSource=WindowedMagnification:0:31@33122791
+  deepestLastOrientationSource=ActivityRecord{8b5a185 u0 io.gitjournal.gitjournal/.MainActivity} t4305}
+  overrideConfig={0.0 ?mcc?mnc ?localeList ?layoutDir sw354dp w354dp h792dp 560dpi nrml long port ?uimode ?night -touch qwerty/v/v -nav/h winConfig={ mBounds=Rect(0, 0 - 1240, 2772) mAppBounds=Rect(0, 0 - 1240, 2772) mMaxBounds=Rect(0, 0 - 1240, 2772) mDisplayRotation=ROTATION_0 mWindowingMode=fullscreen mDisplayWindowingMode=fullscreen mActivityType=undefined mAlwaysOnTop=undefined mRotation=ROTATION_0} ?fontWeightAdjustmentmThemeChanged= 0, mThemeChangedFlags= 0, mFlipFont= 0, mAccessibleChanged= 0, mUxIconConfig= 0, mMaterialColor= ffffffffffffffff, mUserId= -1, mFontUserId= -1, mFontVariationSettings= 0, mFoldingAngle = -1.0, mIconPackName= , mDarkModeBackgroundMaxL= -1.0, mDarkModeDialogBgMaxL= -1.0, mDarkModeForegroundMinL= -1.0, mOplusConfigType= 0, mOplusChangedConfigs= 0, OpSans= -1, mBurmeseFontFlag= -1, mFlag= 0, mPuttDisplayFlag= -1}
+  Display: mDisplayId=238 rootTasks=2
+    init=1240x2772 560dpi mMinSizeOfResizeableTaskDp=220 cur=1240x2772 app=1240x2772 rng=1240x1240-2772x2772
+    deferred=false mLayoutNeeded=false mTouchExcludeRegion=SkRegion((0,0,1240,2772))
+
+  mLayoutSeq=30
+  mCurrentFocus=null
+  mFocusedApp=ActivityRecord{8b5a185 u0 io.gitjournal.gitjournal/.MainActivity} t4305}
+
+  displayId=238
+  mWallpaperTarget=null
+  mLastWallpaperX=-1.0 mLastWallpaperY=-1.0
+
+  mSystemGestureExclusion=SkRegion()
+
+  Display areas in top down Z order:
+    * Leaf:100:100
+    * FullscreenMagnification:61:99
+      * Leaf:61:99
+    * Leaf:60:60
+    * FullscreenMagnification:58:59
+      * Leaf:58:59
+    * Leaf:56:57
+    * FullscreenMagnification:33:55
+      * Leaf:33:55
+    * Leaf:32:32
+    * WindowedMagnification:0:31
+      * FullscreenMagnification:15:31
+        * Leaf:15:31
+      * ImePlaceholder:13:14
+        * ImeContainer
+      * FullscreenMagnification:0:12
+        * Leaf:3:12
+        * DefaultTaskDisplayArea
+        * Leaf:0:1
+
+  Task display areas in top down Z order:
+    TaskDisplayArea DefaultTaskDisplayArea
+      mPreferredTopFocusableRootTask=Task{9af580b #4305 type=standard A=10571:io.gitjournal.gitjournal U=0 visible=true visibleRequested=true mode=fullscreen translucent=false sz=1}
+      mLastFocusedRootTask=Task{9af580b #4305 type=standard A=10571:io.gitjournal.gitjournal U=0 visible=true visibleRequested=true mode=fullscreen translucent=false sz=1}
+      Application tokens in top down Z order:
+      * Task{9af580b #4305 type=standard A=10571:io.gitjournal.gitjournal U=0 visible=true visibleRequested=true mode=fullscreen translucent=false sz=1}
+        bounds=[0,0][1240,2772]
+        * ActivityRecord{8b5a185 u0 io.gitjournal.gitjournal/.MainActivity} t4305}
+      * Task{341e722 #4303 type=home ?? U=0 visible=false visibleRequested=false mode=fullscreen translucent=true sz=1}
+        bounds=[0,0][1240,2772]
+        * Task{1448134 #4304 type=home A=10181:com.android.launcher U=0 rootTaskId=4303 visible=false visibleRequested=false mode=fullscreen translucent=true sz=1}
+          bounds=[0,0][1240,2772]
+          * ActivityRecord{cf0eca5 u0 com.android.launcher/com.android.launcher3.secondarydisplay.SecondaryDisplayLauncher} t4304}
+
+  no ScreenRotationAnimation 
+
+  rootHomeTask=Task=4303
+
+  PinnedTaskController
+    mIsImeShowing=false
+    mImeHeight=0
+    mMinAspectRatio=0.41841003
+    mMaxAspectRatio=2.39
+
+  DisplayFrames w=1240 h=2772 r=0
+
+  DisplayPolicy
+    mCarDockEnablesAccelerometer=true mDeskDockEnablesAccelerometer=true
+    mDockMode=EXTRA_DOCK_STATE_UNDOCKED mLidState=LID_ABSENT
+    mAwake=true mScreenOnEarly=true mScreenOnFully=true
+    mKeyguardDrawComplete=false mWindowManagerDrawComplete=false
+    mHdmiPlugged=false
+    mLastBehavior=DEFAULT
+    mShowingDream=false mDreamingLockscreen=false
+    isKeyguardShowing=false
+    mNavigationBar=Window{306c7ab u0 NavigationBar238}
+    mNavBarOpacityMode=0
+    mNavigationBarCanMove=true
+    mNavigationBarPosition=4
+    mTopFullscreenOpaqueWindowState=Window{af5136f u0 io.gitjournal.gitjournal/io.gitjournal.gitjournal.MainActivity}
+    mNavBarColorWindowCandidate=Window{af5136f u0 io.gitjournal.gitjournal/io.gitjournal.gitjournal.MainActivity}
+    mNavBarBackgroundWindow=Window{af5136f u0 io.gitjournal.gitjournal/io.gitjournal.gitjournal.MainActivity}
+    mLastStatusBarAppearanceRegions=
+    mTopIsFullscreen=false
+    mForceShowNavigationBarEnabled=false mAllowLockscreenWhenOn=false
+    mRemoteInsetsControllerControlsSystemBars=false
+    SystemGestures:
+      mDisplayCutoutTouchableRegionSize=42
+      mSwipeStartThreshold=Rect(84, 152 - 84, 84)
+      mSwipeDistanceThreshold=84
+    Looper state:
+      Looper (android.ui, tid 23) {df04ce4}
+        (Total messages: 0, polling=true, quitting=false)
+
+  DisplayRotation
+    mCurrentAppOrientation=SCREEN_ORIENTATION_UNSPECIFIED
+    mLastOrientation=-1
+    mRotation=0 mDeferredRotationPauseCount=0
+    mLandscapeRotation=ROTATION_90 mSeascapeRotation=ROTATION_270
+    mPortraitRotation=ROTATION_0 mUpsideDownRotation=ROTATION_180
+    mSupportAutoRotation=true
+
+    mCarDockRotation=-1 mDeskDockRotation=-1
+    mUserRotationMode=USER_ROTATION_FREE mUserRotation=ROTATION_0 mCameraRotationMode=0 mAllowAllRotations=unknown
+    mDemoHdmiRotation=ROTATION_90 mDemoHdmiRotationLock=false mUndockedHdmiRotation=-1
+    mLidOpenRotation=-1
+    mFixedToUserRotation=false
+
+
+  WindowInsetsStateController
+    InsetsState
+      mDisplayFrame=Rect(0, 0 - 1240, 2772)
+      mDisplayCutout=DisplayCutout{insets=Rect(0, 0 - 0, 0) waterfall=Insets{left=0, top=0, right=0, bottom=0} boundingRect={Bounds=[Rect(0, 0 - 0, 0), Rect(0, 0 - 0, 0), Rect(0, 0 - 0, 0), Rect(0, 0 - 0, 0)]} cutoutPathParserInfo={CutoutPathParserInfo{displayWidth=0 displayHeight=0 physicalDisplayWidth=0 physicalDisplayHeight=0 density={0.0} cutoutSpec={} rotation={0} scale={0.0} physicalPixelDisplaySizeRatio={0.0}}}}
+      mRoundedCorners=RoundedCorners{[RoundedCorner{position=TopLeft, radius=0, center=Point(0, 0)}, RoundedCorner{position=TopRight, radius=0, center=Point(0, 0)}, RoundedCorner{position=BottomRight, radius=0, center=Point(0, 0)}, RoundedCorner{position=BottomLeft, radius=0, center=Point(0, 0)}]}
+      mRoundedCornerFrame=Rect(0, 0 - 0, 0)
+      mPrivacyIndicatorBounds=PrivacyIndicatorBounds {static bounds=null rotation=0}
+        InsetsSource type=ITYPE_NAVIGATION_BAR frame=[0,2716][1240,2772] visible=true insetsRoundedCornerFrame=false
+        InsetsSource type=ITYPE_LEFT_GESTURES frame=[0,0][0,2772] visible=true insetsRoundedCornerFrame=false
+        InsetsSource type=ITYPE_RIGHT_GESTURES frame=[1240,0][1240,2772] visible=true insetsRoundedCornerFrame=false
+        InsetsSource type=ITYPE_BOTTOM_MANDATORY_GESTURES frame=[0,2464][1240,2772] visible=true insetsRoundedCornerFrame=false
+        InsetsSource type=ITYPE_BOTTOM_TAPPABLE_ELEMENT frame=[0,2618][1240,2772] visible=true insetsRoundedCornerFrame=false
+        InsetsSource type=ITYPE_IME frame=[0,0][0,0] visible=false insetsRoundedCornerFrame=false
+    Control map:
+      ITYPE_NAVIGATION_BAR -> Window{af5136f u0 io.gitjournal.gitjournal/io.gitjournal.gitjournal.MainActivity}
+    InsetsSourceProviders:
+      ImeInsetsSourceProvider
+        mSource=InsetsSource type=ITYPE_IME frame=[0,0][0,0] visible=false insetsRoundedCornerFrame=false
+        mIsLeashReadyForDispatching=true mImeOverrideFrame=[0,0][0,0]
+        mImeShowing=false
+      WindowContainerInsetsSourceProvider
+        mSource=InsetsSource type=ITYPE_BOTTOM_TAPPABLE_ELEMENT frame=[0,2618][1240,2772] visible=true insetsRoundedCornerFrame=false
+        mIsLeashReadyForDispatching=true mImeOverrideFrame=[0,0][0,0]
+        mWindowContainer=Window{306c7ab u0 NavigationBar238}
+      WindowContainerInsetsSourceProvider
+        mSource=InsetsSource type=ITYPE_BOTTOM_MANDATORY_GESTURES frame=[0,2464][1240,2772] visible=true insetsRoundedCornerFrame=false
+        mIsLeashReadyForDispatching=true mImeOverrideFrame=[0,0][0,0]
+        mWindowContainer=Window{306c7ab u0 NavigationBar238}
+      WindowContainerInsetsSourceProvider
+        mSource=InsetsSource type=ITYPE_RIGHT_GESTURES frame=[1240,0][1240,2772] visible=true insetsRoundedCornerFrame=false
+        mIsLeashReadyForDispatching=true mImeOverrideFrame=[0,0][0,0]
+        mWindowContainer=Window{306c7ab u0 NavigationBar238}
+      WindowContainerInsetsSourceProvider
+        mSource=InsetsSource type=ITYPE_LEFT_GESTURES frame=[0,0][0,2772] visible=true insetsRoundedCornerFrame=false
+        mIsLeashReadyForDispatching=true mImeOverrideFrame=[0,0][0,0]
+        mWindowContainer=Window{306c7ab u0 NavigationBar238}
+      WindowContainerInsetsSourceProvider
+        mSource=InsetsSource type=ITYPE_NAVIGATION_BAR frame=[0,2716][1240,2772] visible=true insetsRoundedCornerFrame=false
+        mControl=InsetsSourceControl type=ITYPE_NAVIGATION_BAR mLeash=Surface(name=Surface(name=306c7ab NavigationBar238)/@0xe63d620 - animation-leash of insets_animation)/@0xf039e5 mSurfacePosition=Point(0, 2618) mInsetsHint=Insets{left=0, top=0, right=0, bottom=56} mSkipAnimationOnce=false
+        mIsLeashReadyForDispatching=true mImeOverrideFrame=[0,2618][1240,2772]
+        mWindowContainer=Window{306c7ab u0 NavigationBar238}
+        mAdapter=ControlAdapter mCapturedLeash=Surface(name=Surface(name=306c7ab NavigationBar238)/@0xe63d620 - animation-leash of insets_animation)/@0xf039e5
+        mControlTarget=Window{af5136f u0 io.gitjournal.gitjournal/io.gitjournal.gitjournal.MainActivity}
+    mNextAppTransitionRequests=[], mNextAppTransitionFlags=
+    mAppTransitionState=APP_STATE_IDLE
+    mLastUsedAppTransition=TRANSIT_OLD_TRANSLUCENT_ACTIVITY_OPEN
+    mLastOpeningApp=ActivityRecord{8b5a185 u0 io.gitjournal.gitjournal/.MainActivity} t4305}
+    mLastClosingApp=null
+    mLastChangingApp=null
+  mLastOrientationSource=WindowedMagnification:0:31@212622543
+  deepestLastOrientationSource=ActivityRecord{a31ee15 u0 fr.neamar.kiss/.MainActivity} t918}
+  overrideConfig={1.0 ??mcc??mnc [en_US,ja_US,zh_CN_#Hans] ldltr sw354dp w354dp h744dp 560dpi nrml long widecg port night finger qwerty/v/v -nav/h winConfig={ mBounds=Rect(0, 0 - 1240, 2772) mAppBounds=Rect(0, 110 - 1240, 2716) mMaxBounds=Rect(0, 0 - 1240, 2772) mDisplayRotation=ROTATION_0 mWindowingMode=fullscreen mDisplayWindowingMode=fullscreen mActivityType=undefined mAlwaysOnTop=undefined mRotation=ROTATION_0} as.2 s.77477 fontWeightAdjustment=0mThemeChanged= 0, mThemeChangedFlags= 0, mFlipFont= 0, mAccessibleChanged= -1, mUxIconConfig= 3470610514986926113, mMaterialColor= 0, mUserId= 0, mFontUserId= 0, mFontVariationSettings= 226, mFoldingAngle = -1.0, mIconPackName= , mDarkModeBackgroundMaxL= 0.0, mDarkModeDialogBgMaxL= 27.0, mDarkModeForegroundMinL= 100.0, mOplusConfigType= 1, mOplusChangedConfigs= 0, OpSans= 0, mBurmeseFontFlag= 2, mFlag= 0, mPuttDisplayFlag= -1}
+  Display: mDisplayId=0 rootTasks=7
+    init=1240x2772 560dpi mMinSizeOfResizeableTaskDp=220 cur=1240x2772 app=1240x2606 rng=1240x1074-2662x2606
+    deferred=false mLayoutNeeded=false mTouchExcludeRegion=SkRegion((0,0,1240,2772))
+
+  mLayoutSeq=1409741
+  mCurrentFocus=Window{fc9fbd1 u0 fr.neamar.kiss/fr.neamar.kiss.MainActivity}
+  mFocusedApp=ActivityRecord{a31ee15 u0 fr.neamar.kiss/.MainActivity} t918}
+
+  displayId=0
+  mWallpaperTarget=null
+  mLastWallpaperX=-1.0 mLastWallpaperY=-1.0
+
+  mSystemGestureExclusion=SkRegion()
+
+  Display areas in top down Z order:
+    * Leaf:100:100
+    * HideDisplayCutout:58:99
+      * OneHanded:67:99
+        * FullscreenMagnification:67:99
+          * Leaf:67:99
+      * FullscreenMagnification:66:66
+        * Leaf:66:66
+      * OneHanded:58:65
+        * FullscreenMagnification:61:65
+          * Leaf:61:65
+        * Leaf:60:60
+        * FullscreenMagnification:58:59
+          * Leaf:58:59
+    * Leaf:56:57
+    * HideDisplayCutout:32:55
+      * OneHanded:32:55
+        * FullscreenMagnification:33:55
+          * Leaf:33:55
+        * Leaf:32:32
+    * WindowedMagnification:0:31
+      * HideDisplayCutout:18:31
+        * OneHanded:18:31
+          * FullscreenMagnification:18:31
+            * Leaf:18:31
+      * OneHanded:17:17
+        * FullscreenMagnification:17:17
+          * Leaf:17:17
+      * HideDisplayCutout:16:16
+        * OneHanded:16:16
+          * FullscreenMagnification:16:16
+            * Leaf:16:16
+      * OneHanded:15:15
+        * FullscreenMagnification:15:15
+          * Leaf:15:15
+      * HideDisplayCutout:0:14
+        * OneHanded:0:14
+          * ImePlaceholder:13:14
+            * ImeContainer
+          * FullscreenMagnification:0:12
+            * Leaf:3:12
+            * DefaultTaskDisplayArea
+            * Leaf:0:1
+
+  Task display areas in top down Z order:
+    TaskDisplayArea DefaultTaskDisplayArea
+      mPreferredTopFocusableRootTask=Task{74c433d #1 type=home ?? U=0 visible=true visibleRequested=true mode=fullscreen translucent=false sz=1}
+      mLastFocusedRootTask=Task{74c433d #1 type=home ?? U=0 visible=true visibleRequested=true mode=fullscreen translucent=false sz=1}
+      Application tokens in top down Z order:
+      * Task{74c433d #1 type=home ?? U=0 visible=true visibleRequested=true mode=fullscreen translucent=false sz=1}
+        bounds=[0,0][1240,2772]
+        * Task{b881ef7 #918 type=home A=10606:fr.neamar.kiss U=0 rootTaskId=1 visible=true visibleRequested=true mode=fullscreen translucent=false sz=1}
+          bounds=[0,0][1240,2772]
+          * ActivityRecord{a31ee15 u0 fr.neamar.kiss/.MainActivity} t918}
+      * Task{72f1f2c #919 type=recents ?? U=0 visible=false visibleRequested=false mode=fullscreen translucent=true sz=1}
+        bounds=[0,0][1240,2772]
+        * Task{99583f3 #920 type=recents I=com.android.launcher/com.android.quickstep.RecentsActivity U=0 rootTaskId=919 visible=false visibleRequested=false mode=fullscreen translucent=true sz=1}
+          bounds=[0,0][1240,2772]
+          * ActivityRecord{31fd300 u0 com.android.launcher/com.android.quickstep.RecentsActivity} t920}
+      * Task{9b8b404 #4296 type=standard A=10304:com.github.android U=0 visible=false visibleRequested=false mode=fullscreen translucent=true sz=3}
+        bounds=[0,0][1240,2772]
+        * ActivityRecord{a835ea5 u0 com.github.android/.repository.files.RepositoryFilesActivity} t4296}
+        * ActivityRecord{a957fd9 u0 com.github.android/.repository.RepositoryDetailActivity} t4296}
+        * ActivityRecord{c388496 u0 com.github.android/.main.MainActivity} t4296}
+      * Task{990dfdf #4297 type=standard A=10597:org.tasks U=0 visible=false visibleRequested=false mode=fullscreen translucent=true sz=1}
+        bounds=[0,0][1240,2772]
+        * ActivityRecord{684d800 u0 org.tasks/com.todoroo.astrid.activity.TaskListActivity} t4297}
+      * Task{a7632d5 #4292 type=standard A=10280:com.termux U=0 visible=false visibleRequested=false mode=fullscreen translucent=true sz=1}
+        bounds=[0,0][1240,2772]
+        * ActivityRecord{3d4a8bf u0 com.termux/.app.TermuxActivity} t4292}
+      * Task{13d053e #1184 type=undefined ?? U=0 visible=false visibleRequested=false mode=fullscreen translucent=true sz=0}
+        bounds=[0,0][1240,2772]
+      * Task{a884f9f #1185 type=undefined ?? U=0 visible=false visibleRequested=false mode=fullscreen translucent=true sz=2}
+        bounds=[0,0][1240,2772]
+        * Task{64864b5 #1187 type=undefined ?? U=0 rootTaskId=1185 visible=false visibleRequested=false mode=multi-window translucent=true sz=0}
+          bounds=[0,0][1240,2772]
+        * Task{84688ec #1186 type=undefined ?? U=0 rootTaskId=1185 visible=false visibleRequested=false mode=multi-window translucent=true sz=0}
+          bounds=[0,0][1240,2772]
+
+  no ScreenRotationAnimation 
+
+  rootHomeTask=Task=1
+  rootRecentsTask=Task=919
+
+  PinnedTaskController
+    mIsImeShowing=false
+    mImeHeight=0
+    mMinAspectRatio=0.41841003
+    mMaxAspectRatio=2.39
+
+  DisplayFrames w=1240 h=2772 r=0
+
+  DisplayPolicy
+    mCarDockEnablesAccelerometer=true mDeskDockEnablesAccelerometer=true
+    mDockMode=EXTRA_DOCK_STATE_UNDOCKED mLidState=LID_ABSENT
+    mAwake=true mScreenOnEarly=true mScreenOnFully=true
+    mKeyguardDrawComplete=true mWindowManagerDrawComplete=true
+    mHdmiPlugged=false
+    mLastBehavior=DEFAULT
+    mShowingDream=false mDreamingLockscreen=false
+    mStatusBar=Window{ee43ec3 u0 StatusBar}
+    mExpandedPanel=Window{c45c728 u0 NotificationShade}
+    isKeyguardShowing=false
+    mNavigationBar=Window{985605f u0 NavigationBar0}
+    mNavBarOpacityMode=2
+    mNavigationBarCanMove=false
+    mNavigationBarPosition=4
+    mFocusedWindow=Window{fc9fbd1 u0 fr.neamar.kiss/fr.neamar.kiss.MainActivity}
+    mTopFullscreenOpaqueWindowState=Window{fc9fbd1 u0 fr.neamar.kiss/fr.neamar.kiss.MainActivity}
+    mNavBarColorWindowCandidate=Window{fc9fbd1 u0 fr.neamar.kiss/fr.neamar.kiss.MainActivity}
+    mNavBarBackgroundWindow=Window{fc9fbd1 u0 fr.neamar.kiss/fr.neamar.kiss.MainActivity}
+    mLastStatusBarAppearanceRegions=
+      AppearanceRegion{ bounds=[0,0][1240,2772]}
+    mStatusBarBackgroundWindows=
+      Window{fc9fbd1 u0 fr.neamar.kiss/fr.neamar.kiss.MainActivity}
+    mTopIsFullscreen=false
+    mForceShowNavigationBarEnabled=false mAllowLockscreenWhenOn=false
+    mRemoteInsetsControllerControlsSystemBars=false
+    SystemGestures:
+      mDisplayCutoutTouchableRegionSize=42
+      mSwipeStartThreshold=Rect(84, 152 - 84, 84)
+      mSwipeDistanceThreshold=84
+    Looper state:
+      Looper (android.ui, tid 23) {df04ce4}
+        (Total messages: 0, polling=true, quitting=false)
+
+  DisplayRotation
+    mCurrentAppOrientation=SCREEN_ORIENTATION_USER
+    mLastOrientation=2
+    mRotation=0 mDeferredRotationPauseCount=0
+    mLandscapeRotation=ROTATION_90 mSeascapeRotation=ROTATION_270
+    mPortraitRotation=ROTATION_0 mUpsideDownRotation=ROTATION_180
+    mSupportAutoRotation=true
+    WindowOrientationListener
+      mEnabled=true
+      mCurrentRotation=ROTATION_0
+      mSensorType=null
+      mSensor={Sensor name="dev_orient", vendor="mtk", version=1, type=27, maxRange=3.0, resolution=1.0, power=0.001, minDelay=0}
+      mRate=2
+      OrientationSensorJudge
+        mDesiredRotation=ROTATION_180
+        mProposedRotation=ROTATION_180
+        mTouching=false
+        mTouchEndedTimestampNanos=3185311685150490
+        mLastRotationResolution=2
+
+    mCarDockRotation=-1 mDeskDockRotation=-1
+    mUserRotationMode=USER_ROTATION_LOCKED mUserRotation=ROTATION_0 mCameraRotationMode=0 mAllowAllRotations=false
+    mDemoHdmiRotation=ROTATION_90 mDemoHdmiRotationLock=false mUndockedHdmiRotation=-1
+    mLidOpenRotation=-1
+    mFixedToUserRotation=false
+
+    RotationHistory
+      03-24 20:11:57.244 ROTATION_0 to ROTATION_90
+        source=ActivityRecord{ba82c0a u0 tv.danmaku.bili/com.bilibili.video.story.StoryVideoActivity} t4271} SCREEN_ORIENTATION_LANDSCAPE
+        mode=USER_ROTATION_LOCKED user=ROTATION_0 sensor=ROTATION_270
+      03-24 20:11:57.934 ROTATION_90 to ROTATION_270
+        source=ActivityRecord{ba82c0a u0 tv.danmaku.bili/com.bilibili.video.story.StoryVideoActivity} t4271} SCREEN_ORIENTATION_REVERSE_LANDSCAPE
+        mode=USER_ROTATION_LOCKED user=ROTATION_0 sensor=ROTATION_270
+      03-24 20:12:00.649 ROTATION_270 to ROTATION_90
+        source=ActivityRecord{ba82c0a u0 tv.danmaku.bili/com.bilibili.video.story.StoryVideoActivity} t4271} SCREEN_ORIENTATION_LANDSCAPE
+        mode=USER_ROTATION_LOCKED user=ROTATION_0 sensor=ROTATION_90
+      03-24 20:18:48.402 ROTATION_90 to ROTATION_0
+        source=ActivityRecord{ba82c0a u0 tv.danmaku.bili/com.bilibili.video.story.StoryVideoActivity} t4271} SCREEN_ORIENTATION_PORTRAIT
+        mode=USER_ROTATION_LOCKED user=ROTATION_0 sensor=ROTATION_0
+      03-24 22:00:46.055 ROTATION_0 to ROTATION_90
+        source=ActivityRecord{1da0cfb u0 tv.danmaku.bili/com.bilibili.video.story.StoryVideoActivity} t4276} SCREEN_ORIENTATION_LANDSCAPE
+        mode=USER_ROTATION_LOCKED user=ROTATION_0 sensor=ROTATION_90
+      03-24 22:08:21.502 ROTATION_90 to ROTATION_0
+        source=ActivityRecord{1da0cfb u0 tv.danmaku.bili/com.bilibili.video.story.StoryVideoActivity} t4276} SCREEN_ORIENTATION_PORTRAIT
+        mode=USER_ROTATION_LOCKED user=ROTATION_0 sensor=ROTATION_180
+      03-25 08:04:22.204 ROTATION_0 to ROTATION_90
+        source=ActivityRecord{76900c4 u0 tv.danmaku.bili/com.bilibili.video.story.StoryVideoActivity} t4289} SCREEN_ORIENTATION_LANDSCAPE
+        mode=USER_ROTATION_LOCKED user=ROTATION_0 sensor=ROTATION_0
+      03-25 08:05:41.598 ROTATION_90 to ROTATION_0
+        source=ActivityRecord{76900c4 u0 tv.danmaku.bili/com.bilibili.video.story.StoryVideoActivity} t4289} SCREEN_ORIENTATION_PORTRAIT
+        mode=USER_ROTATION_LOCKED user=ROTATION_0 sensor=ROTATION_90
+
+  InputConsumers:
+    name=recents_animation_input_consumer pid=2682 user=UserHandle{0}
+
+  WindowInsetsStateController
+    InsetsState
+      mDisplayFrame=Rect(0, 0 - 1240, 2772)
+      mDisplayCutout=DisplayCutout{insets=Rect(0, 110 - 0, 0) waterfall=Insets{left=0, top=0, right=0, bottom=0} boundingRect={Bounds=[Rect(0, 0 - 0, 0), Rect(582, 0 - 658, 110), Rect(0, 0 - 0, 0), Rect(0, 0 - 0, 0)]} cutoutPathParserInfo={CutoutPathParserInfo{displayWidth=1240 displayHeight=2772 physicalDisplayWidth=1240 physicalDisplayHeight=2772 density={3.5} cutoutSpec={M -38,0 L -38,110 L 38,110 L 38,0 Z} rotation={0} scale={1.0} physicalPixelDisplaySizeRatio={1.0}}}}
+      mRoundedCorners=RoundedCorners{[RoundedCorner{position=TopLeft, radius=0, center=Point(0, 0)}, RoundedCorner{position=TopRight, radius=0, center=Point(0, 0)}, RoundedCorner{position=BottomRight, radius=0, center=Point(0, 0)}, RoundedCorner{position=BottomLeft, radius=0, center=Point(0, 0)}]}
+      mRoundedCornerFrame=Rect(0, 0 - 0, 0)
+      mPrivacyIndicatorBounds=PrivacyIndicatorBounds {static bounds=Rect(974, 0 - 1254, 110) rotation=0}
+        InsetsSource type=ITYPE_STATUS_BAR frame=[0,0][1240,110] visible=true insetsRoundedCornerFrame=false
+        InsetsSource type=ITYPE_NAVIGATION_BAR frame=[0,2716][1240,2772] visible=true insetsRoundedCornerFrame=false
+        InsetsSource type=ITYPE_LEFT_GESTURES frame=[0,0][105,2772] visible=true insetsRoundedCornerFrame=false
+        InsetsSource type=ITYPE_RIGHT_GESTURES frame=[1135,0][1240,2772] visible=true insetsRoundedCornerFrame=false
+        InsetsSource type=ITYPE_TOP_MANDATORY_GESTURES frame=[0,0][1240,152] visible=true insetsRoundedCornerFrame=false
+        InsetsSource type=ITYPE_BOTTOM_MANDATORY_GESTURES frame=[0,2660][1240,2772] visible=true insetsRoundedCornerFrame=false
+        InsetsSource type=ITYPE_LEFT_DISPLAY_CUTOUT frame=[0,0][-100000,2772] visible=true insetsRoundedCornerFrame=false
+        InsetsSource type=ITYPE_TOP_DISPLAY_CUTOUT frame=[0,0][1240,110] visible=true insetsRoundedCornerFrame=false
+        InsetsSource type=ITYPE_RIGHT_DISPLAY_CUTOUT frame=[100000,0][1240,2772] visible=true insetsRoundedCornerFrame=false
+        InsetsSource type=ITYPE_BOTTOM_DISPLAY_CUTOUT frame=[0,100000][1240,2772] visible=true insetsRoundedCornerFrame=false
+        InsetsSource type=ITYPE_TOP_TAPPABLE_ELEMENT frame=[0,0][1240,110] visible=true insetsRoundedCornerFrame=false
+        InsetsSource type=ITYPE_BOTTOM_TAPPABLE_ELEMENT frame=[0,0][0,0] visible=true insetsRoundedCornerFrame=false
+        InsetsSource type=ITYPE_IME frame=[0,0][0,0] visible=false insetsRoundedCornerFrame=false
+    Control map:
+      ITYPE_IME -> Window{fc9fbd1 u0 fr.neamar.kiss/fr.neamar.kiss.MainActivity}
+      ITYPE_NAVIGATION_BAR -> Window{fc9fbd1 u0 fr.neamar.kiss/fr.neamar.kiss.MainActivity}
+      ITYPE_STATUS_BAR -> Window{fc9fbd1 u0 fr.neamar.kiss/fr.neamar.kiss.MainActivity}
+    InsetsSourceProviders:
+      ImeInsetsSourceProvider
+        mSource=InsetsSource type=ITYPE_IME frame=[0,0][0,0] visible=false insetsRoundedCornerFrame=false
+        mControl=InsetsSourceControl type=ITYPE_IME mLeash=Surface(name=Surface(name=b0bfab7 InputMethod)/@0x666018d - animation-leash of insets_animation)/@0x2cd2f16 mSurfacePosition=Point(0, 110) mInsetsHint=Insets{left=0, top=0, right=0, bottom=949} mSkipAnimationOnce=false
+        mIsLeashReadyForDispatching=true mImeOverrideFrame=[0,0][0,0]
+        mWindowContainer=Window{b0bfab7 u0 InputMethod}
+        mAdapter=ControlAdapter mCapturedLeash=Surface(name=Surface(name=b0bfab7 InputMethod)/@0x666018d - animation-leash of insets_animation)/@0x2cd2f16
+        mControlTarget=Window{fc9fbd1 u0 fr.neamar.kiss/fr.neamar.kiss.MainActivity}
+        mImeShowing=false
+      WindowContainerInsetsSourceProvider
+        mSource=InsetsSource type=ITYPE_BOTTOM_TAPPABLE_ELEMENT frame=[0,0][0,0] visible=true insetsRoundedCornerFrame=false
+        mIsLeashReadyForDispatching=true mImeOverrideFrame=[0,0][0,0]
+        mWindowContainer=Window{985605f u0 NavigationBar0}
+      WindowContainerInsetsSourceProvider
+        mSource=InsetsSource type=ITYPE_TOP_TAPPABLE_ELEMENT frame=[0,0][1240,110] visible=true insetsRoundedCornerFrame=false
+        mIsLeashReadyForDispatching=true mImeOverrideFrame=[0,0][0,0]
+        mWindowContainer=Window{ee43ec3 u0 StatusBar}
+      WindowContainerInsetsSourceProvider
+        mSource=InsetsSource type=ITYPE_BOTTOM_MANDATORY_GESTURES frame=[0,2660][1240,2772] visible=true insetsRoundedCornerFrame=false
+        mIsLeashReadyForDispatching=true mImeOverrideFrame=[0,0][0,0]
+        mWindowContainer=Window{985605f u0 NavigationBar0}
+      WindowContainerInsetsSourceProvider
+        mSource=InsetsSource type=ITYPE_TOP_MANDATORY_GESTURES frame=[0,0][1240,152] visible=true insetsRoundedCornerFrame=false
+        mIsLeashReadyForDispatching=true mImeOverrideFrame=[0,0][0,0]
+        mWindowContainer=Window{ee43ec3 u0 StatusBar}
+      WindowContainerInsetsSourceProvider
+        mSource=InsetsSource type=ITYPE_RIGHT_GESTURES frame=[1135,0][1240,2772] visible=true insetsRoundedCornerFrame=false
+        mIsLeashReadyForDispatching=true mImeOverrideFrame=[0,0][0,0]
+        mWindowContainer=Window{985605f u0 NavigationBar0}
+      WindowContainerInsetsSourceProvider
+        mSource=InsetsSource type=ITYPE_LEFT_GESTURES frame=[0,0][105,2772] visible=true insetsRoundedCornerFrame=false
+        mIsLeashReadyForDispatching=true mImeOverrideFrame=[0,0][0,0]
+        mWindowContainer=Window{985605f u0 NavigationBar0}
+      WindowContainerInsetsSourceProvider
+        mSource=InsetsSource type=ITYPE_NAVIGATION_BAR frame=[0,2716][1240,2772] visible=true insetsRoundedCornerFrame=false
+        mControl=InsetsSourceControl type=ITYPE_NAVIGATION_BAR mLeash=Surface(name=Surface(name=985605f NavigationBar0)/@0xc141791 - animation-leash of insets_animation)/@0x41d84a mSurfacePosition=Point(0, 2618) mInsetsHint=Insets{left=0, top=0, right=0, bottom=56} mSkipAnimationOnce=false
+        mIsLeashReadyForDispatching=true mImeOverrideFrame=[0,2618][1240,2772]
+        mWindowContainer=Window{985605f u0 NavigationBar0}
+        mAdapter=ControlAdapter mCapturedLeash=Surface(name=Surface(name=985605f NavigationBar0)/@0xc141791 - animation-leash of insets_animation)/@0x41d84a
+        mControlTarget=Window{fc9fbd1 u0 fr.neamar.kiss/fr.neamar.kiss.MainActivity}
+      WindowContainerInsetsSourceProvider
+        mSource=InsetsSource type=ITYPE_STATUS_BAR frame=[0,0][1240,110] visible=true insetsRoundedCornerFrame=false
+        mControl=InsetsSourceControl type=ITYPE_STATUS_BAR mLeash=Surface(name=Surface(name=ee43ec3 StatusBar)/@0xd29522a - animation-leash of insets_animation)/@0xf2bd3bb mSurfacePosition=Point(0, 0) mInsetsHint=Insets{left=0, top=110, right=0, bottom=0} mSkipAnimationOnce=false
+        mIsLeashReadyForDispatching=true mImeOverrideFrame=[0,0][0,0]
+        mWindowContainer=Window{ee43ec3 u0 StatusBar}
+        mAdapter=ControlAdapter mCapturedLeash=Surface(name=Surface(name=ee43ec3 StatusBar)/@0xd29522a - animation-leash of insets_animation)/@0xf2bd3bb
+        mControlTarget=Window{fc9fbd1 u0 fr.neamar.kiss/fr.neamar.kiss.MainActivity}
+    mNextAppTransitionRequests=[], mNextAppTransitionFlags=
+    mAppTransitionState=APP_STATE_IDLE
+    mLastUsedAppTransition=TRANSIT_OLD_WALLPAPER_CLOSE
+    mLastOpeningApp=ActivityRecord{a31ee15 u0 fr.neamar.kiss/.MainActivity} t918}
+    mLastClosingApp=ActivityRecord{31fd300 u0 com.android.launcher/com.android.quickstep.RecentsActivity} t920}
+    mLastChangingApp=null

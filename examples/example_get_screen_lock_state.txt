@@ -1,0 +1,58 @@
+the following code is python, extracted from swm android pc window manager project.
+
+the code is incomplete, however it might help you understand how to get android lock state using su commands.
+
+
+    def check_clipboard_malfunction(self):
+        display_and_lock_state = self.swm.adb_wrapper.get_display_and_lock_state()
+        print("Display and lock state: %s" % display_and_lock_state)
+        clipboard_may_malfunction = False
+        if "_locked" in display_and_lock_state:
+            clipboard_may_malfunction = True
+            print("Device is locked")
+        if "off_" in display_and_lock_state:
+            clipboard_may_malfunction = True
+            print("Main display is off")  # TODO: fix false nagative
+            # mHoldingWakeLockSuspendBlocker=false
+            # mHoldingDisplaySuspendBlocker=true
+        if display_and_lock_state == "unknown":
+            clipboard_may_malfunction = True
+            print("Warning: Device display and lock state unknown")
+        if clipboard_may_malfunction:
+            print("Warning: Clipboard may malfunction")
+        return clipboard_may_malfunction
+
+
+
+    def get_display_and_lock_state(self):
+        # reference: https://stackoverflow.com/questions/35275828/is-there-a-way-to-check-if-android-device-screen-is-locked-via-adb
+        # adb shell dumpsys power | grep 'mHolding'
+        # If both are false, the display is off.
+        # If mHoldingWakeLockSuspendBlocker is false, and mHoldingDisplaySuspendBlocker is true, the display is on, but locked.
+        # If both are true, the display is on.
+        output = self.check_output(["shell", "dumpsys", "power"])
+        lines = grep_lines(output, ["mHolding"])
+        data = parse_dumpsys_keyvalue_output("\n".join(lines))
+        if (
+            data.get("mHoldingWakeLockSuspendBlocker") == "false"
+            and data.get("mHoldingDisplaySuspendBlocker") == "false"
+        ):
+            ret = "off_locked"
+        elif (
+            data.get("mHoldingWakeLockSuspendBlocker") == "true"
+            and data.get("mHoldingDisplaySuspendBlocker") == "true"
+        ):
+            ret = "on_unlocked"
+        elif (
+            data.get("mHoldingWakeLockSuspendBlocker") == "true"
+            and data.get("mHoldingDisplaySuspendBlocker") == "false"
+        ):
+            ret = "on_locked"
+        elif (
+            data.get("mHoldingWakeLockSuspendBlocker") == "false"
+            and data.get("mHoldingDisplaySuspendBlocker") == "true"
+        ):
+            ret = "off_unlocked"
+        else:
+            ret = "unknown"
+        return ret

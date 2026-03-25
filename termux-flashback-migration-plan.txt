@@ -1,0 +1,6 @@
+- [x] implement and test example code under examples folder
+- [x] create a plan on writing an example code with two basic functions, one to be screenshot, one to be checking current active app in display 0 and app name, with prerequisite checking like su availability, and getting current user name for changing permissions after su operations. write test function running at if __name__ == "__main__" code block for this code script.
+- [x] implement the plan, under folder termux-screenshot-workers-primitives
+- [ ] rewrite the flashback-screenshots folder, make it into flashback-termux (created this folder, identical to flashback-screenshots initially, do rewrite afterwards), and make sure to use termux specific screenshot worker and window title extraction worker (which is basically detecting active activity app name, if app name is None then use active activity apk id instead, if all detection fail just use Unknown instead), use termux-screenshot-workers-primitives as reference
+- [ ] update readme, config example file, pyproject, accordingly, in flashback-termux folder, the repo url is: https://github.com/james4ever0/flashback-termux
+- [ ] make webui in flashback-termux responsive, mobile friendly.

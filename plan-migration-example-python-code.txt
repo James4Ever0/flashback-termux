@@ -1,0 +1,195 @@
+# Plan: Example Python Code for Termux Screenshot and App Detection
+
+## Overview
+Create a Python script with two core functions for Android automation in Termux environment, with proper prerequisite checking and permission handling.
+
+## Prerequisites Check Functions
+
+### 1. `check_su_available()`
+- **Purpose**: Check if `su` (superuser) binary is available and accessible
+- **Implementation**: Run `which su` or `su -c "echo test"` and check return code
+- **Returns**: Boolean indicating su availability
+- **Notes**: Essential for all subsequent operations requiring root access
+
+### 2. `get_current_user()`
+- **Purpose**: Get the current non-root username for permission restoration
+- **Implementation**: Run `whoami` before any su operations, or use `$USER` environment variable
+- **Returns**: String username (e.g., "u0_a123")
+- **Notes**: Used to chown files back to the Termux user after root operations
+
+### 3. `check_aapt_available()`
+- **Purpose**: Check if `aapt` binary is available in PATH
+- **Implementation**: Use `shutil.which("aapt")` to check if executable exists in PATH
+- **Returns**: Boolean indicating aapt availability
+- **Notes**: `aapt` runs as normal user, NOT as root (no su needed)
+
+## Core Functions
+
+### 4. `take_screenshot(output_path)`
+- **Purpose**: Capture screenshot of the current display
+- **Prerequisites**: `check_su_available()` must return True
+- **Implementation**:
+  - Use Android's `screencap` binary via su: `su -c "/system/bin/screencap -p /data/local/tmp/screenshot.png"`
+  - Copy from temp location to output_path: `su -c "cp /data/local/tmp/screenshot.png {output_path}"`
+  - Fix permissions: `su -c "chown {user}:{user} {output_path}"`
+  - Clean up temp file
+- **Parameters**:
+  - `output_path`: Full path where screenshot should be saved
+- **Returns**: Tuple `(success: bool, message: str)`
+- **Error Handling**:
+  - Check if screencap binary exists
+  - Handle permission denied errors
+  - Handle insufficient storage errors
+
+### 5. `get_active_app_info()`
+- **Purpose**: Get the currently focused app package name and activity on display 0
+- **Prerequisites**: `check_su_available()` must return True
+- **Implementation**:
+  - Use `dumpsys window` or `dumpsys activity` via su
+  - Parse for `mCurrentFocus` or `mFocusedWindow` field
+  - Alternative: Use `dumpsys activity activities | grep mResumedActivity`
+  - Extract package name and activity class name
+- **Returns**: Dictionary with keys:
+  - `package`: Package name (e.g., "com.termux")
+  - `activity`: Full activity name (e.g., "com.termux.app.TermuxActivity")
+  - `display`: Display ID (should be 0)
+- **Error Handling**:
+  - Handle cases where no app is focused
+  - Handle parsing failures gracefully
+
+### 6. `get_screen_lock_state(valid_states)`
+- **Purpose**: Get the Android display and lock state, validating against allowed states
+- **Prerequisites**: `check_su_available()` must return True
+- **Implementation**:
+  - Run `su -c "dumpsys power"` and capture output
+  - Parse for `mHoldingWakeLockSuspendBlocker` and `mHoldingDisplaySuspendBlocker` values
+  - Determine state based on the two boolean values:
+    - Both true: `on_unlocked` (display on, unlocked)
+    - Wake true, Display false: `on_locked` (display on, locked)
+    - Wake false, Display true: `off_unlocked` (display off, unlocked - special state)
+    - Both false: `off_locked` (display off, locked)
+    - Any other combination: `unknown`
+  - Check if determined state is in `valid_states` list
+- **Parameters**:
+  - `valid_states`: List of strings representing allowed states (e.g., `['off_unlocked']`, `['on_unlocked', 'on_locked']`)
+  - **NO DEFAULT VALUE** - caller must always provide this parameter
+- **Returns**: String state name if valid, or raises Exception/returns error dict if state not in valid_states
+- **Error Handling**:
+  - Handle dumpsys parsing failures
+  - Return error if current state not in valid_states list
+
+### 7. `get_apk_name(apk_path)`
+- **Purpose**: Extract the application name from an APK file using aapt
+- **Prerequisites**: `check_aapt_available()` must return True
+- **Implementation**:
+  - Import `shutil` and `tempfile` modules
+  - Verify `aapt` is available: `shutil.which("aapt")` must not be None
+  - **Wrap entire process in `tempfile.NamedTemporaryDirectory()` context manager**:
+    ```python
+    with tempfile.NamedTemporaryDirectory() as temp_dir:
+        # All APK operations happen inside this context
+        # Copy APK (with su if needed)
+        # Run aapt as normal user
+        # Parse and return result
+    # Auto-cleanup happens here
+    ```
+  - Inside the context manager:
+    - If APK is in a root-only accessible location:
+      - Use `su -c "cp {apk_path} {temp_dir}/"` to copy APK to temp directory (root operation)
+      - Use `su -c "chown {user}:{user} {temp_dir}/*.apk"` to fix permissions
+      - Set local_apk_path to the copied file in temp directory
+    - Else (APK is user-accessible):
+      - Use local_apk_path = apk_path directly
+    - Run `aapt dump badging {local_apk_path}` as **normal user** (NO su needed)
+    - Parse output for `application-label:` or `application: label=` field
+    - Return extracted app name
+- **Parameters**:
+  - `apk_path`: Full path to the APK file (may be in root-only location like /data/app/)
+- **Returns**: String app name, or raises Exception on failure
+- **Error Handling**:
+  - Raise error if aapt not found in PATH (use shutil.which)
+  - Handle PermissionError if APK cannot be read
+  - Handle subprocess errors from aapt command
+  - Handle missing application-label in aapt output
+- **Important Notes**:
+  - `aapt` runs as **normal user** (no su needed)
+  - Only the file copy operation needs root (if APK is in protected location)
+  - Use `tempfile.NamedTemporaryDirectory` context manager for secure temp storage
+  - Entire extraction process is wrapped in the context manager
+
+## Helper Functions
+
+### 8. `run_su_command(command)`
+- **Purpose**: Execute a command with su privileges and return output
+- **Parameters**: `command` - String command to execute
+- **Returns**: Tuple `(returncode: int, stdout: str, stderr: str)`
+- **Implementation**: Use subprocess.run with `su -c "command"`
+
+### 9. `fix_file_permissions(filepath, user)`
+- **Purpose**: Change file ownership back to Termux user after su operation
+- **Parameters**:
+  - `filepath`: Path to file
+  - `user`: Username from `get_current_user()`
+- **Returns**: Boolean success status
+
+## Test Function (if __name__ == "__main__")
+
+### Test Flow:
+1. **Print banner** with script name and purpose
+2. **Check prerequisites**:
+   - Call `check_su_available()`
+   - If False, print error and exit with code 1
+   - If True, print success message
+3. **Get current user**:
+   - Call `get_current_user()`
+   - Store for permission operations
+4. **Test screenshot function**:
+   - Set output path to `/data/data/com.termux/files/home/test_screenshot.png`
+   - Call `take_screenshot(output_path)`
+   - Print result (success/failure and path or error message)
+   - If success, verify file exists and print file size
+5. **Test active app detection**:
+   - Call `get_active_app_info()`
+   - Print returned dictionary in formatted way
+   - Verify both package and activity are non-empty
+6. **Test screen lock state function**:
+   - Call `get_screen_lock_state(['off_unlocked'])` - pass valid_states list with 'off_unlocked'
+   - Print returned state
+   - Verify state is in the provided valid_states list
+   - If state is 'unknown' or not in valid_states, print warning
+7. **Test APK name extraction function**:
+   - Check `check_aapt_available()` - skip test if aapt not found
+   - Find a sample APK path (e.g., Termux own APK at `/data/app/com.termux*/base.apk` or use a known APK)
+   - Call `get_apk_name(apk_path)`
+   - Print extracted app name
+   - Verify result is a non-empty string
+8. **Cleanup**:
+   - Remove test screenshot if created
+   - Print test summary with pass/fail status for each test
+
+## File Structure
+
+```
+termux-screenshot-workers-primitives/
+└── example_basic_functions.py
+```
+
+## Dependencies
+- Python 3.7+
+- subprocess module (stdlib)
+- re module for parsing (stdlib)
+- os module for path operations (stdlib)
+- shutil module (stdlib) - for `shutil.which()` to check aapt availability
+- tempfile module (stdlib) - for `NamedTemporaryDirectory` context manager
+
+## Android Requirements
+- Root access (su binary available)
+- Termux app installed
+- Android 7.0+ (API 24+) recommended for screencap compatibility
+
+## Notes for Implementation
+- All su operations should use full paths to binaries when possible
+- Temporary files should be created in /data/local/tmp/ (world-writable with root)
+- Always chown files back to Termux user after root creates them
+- Handle the case where screencap output needs to be pulled through su layers
+- The dumpsys output format varies between Android versions - implement flexible parsing
