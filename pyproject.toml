@@ -1,0 +1,83 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "flashback-termux"
+version = "0.1.0"
+description = "Android screenshot automation for Termux with web-based timeline"
+readme = "README.md"
+requires-python = ">=3.9"
+license = {text = "MIT"}
+authors = [
+    {name = "James Brown"}
+]
+keywords = ["screenshot", "android", "termux", "timeline", "automation", "ocr", "search"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: End Users/Desktop",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: Android",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Multimedia :: Graphics :: Capture :: Screen Capture",
+    "Topic :: Utilities",
+]
+
+dependencies = [
+    "Pillow>=10.0.0",
+    "pyyaml>=6.0.0",
+    "click>=8.0.0",
+    "rich>=13.0.0",
+    "platformdirs>=3.0.0",
+    "requests>=2.28.0",
+]
+
+[project.optional-dependencies]
+ocr = ["pytesseract>=0.3.10"]
+embedding = ["numpy>=1.24.0", "requests>=2.28.0"]
+search = ["jieba>=0.42.1"]
+multilingual = ["jieba>=0.42.1"]
+webui = ["flask>=3.0.0", "jinja2>=3.1.5", "werkzeug>=3.0.0", "tqdm>=4.65.0"]
+all = ["flashback-termux[ocr,search,embedding,webui]"]
+
+dev = [
+    "pytest>=7.0.0",
+    "pytest-asyncio>=0.21.0",
+    "black>=23.0.0",
+    "ruff>=0.1.0",
+    "mypy>=1.0.0",
+]
+
+[project.scripts]
+flashback = "flashback.cli.main:main"
+flashback-api = "flashback.api.server:main"
+
+[project.urls]
+Homepage = "https://github.com/james4ever0/flashback-termux"
+Repository = "https://github.com/james4ever0/flashback-termux"
+Issues = "https://github.com/james4ever0/flashback-termux/issues"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["flashback*"]
+
+[tool.setuptools.package-data]
+"flashback.api" = ["static/**/*", "templates/**/*"]
+"flashback.web" = ["static/**/*", "templates/**/*"]
+
+[tool.black]
+line-length = 100
+target-version = ["py39", "py310", "py311", "py312"]
+
+[tool.ruff]
+line-length = 100
+select = ["E", "F", "W", "I"]
+
+[tool.mypy]
+python_version = "3.9"
+warn_return_any = true
+warn_unused_configs = true
