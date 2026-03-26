@@ -153,9 +153,36 @@
             color: #888;
         }
         .error { color: #ff6b6b; }
+
+        /* Mobile responsiveness */
         @media (max-width: 900px) {
             .detail-grid {
                 grid-template-columns: 1fr;
+            }
+        }
+        @media (max-width: 768px) {
+            .container { padding: 12px; }
+            h1 { font-size: 22px; }
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
+            }
+            .neighbor-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .info-panel { padding: 15px; }
+            .ocr-text {
+                max-height: 300px;
+                font-size: 12px;
+            }
+        }
+        @media (max-width: 480px) {
+            .neighbor-grid {
+                grid-template-columns: 1fr;
+            }
+            .neighbor-card img {
+                height: 180px;
             }
         }
     </style>
