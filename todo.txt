@@ -1,0 +1,6 @@
+- [x] find out why it cannot find the current active app on display 0, since currently it gets the current active app across all displays
+- [x] according to my observation, maybe the first candidate of current function "get_active_app_info" in file flashback/workers/window_title.py is the current focused display and its app running inside. we need to extract the true display id associated with every foreground app.
+- [x] find out if we can get the current active display id, so we only take screenshot at that display instead.
+- [x] infer unknown app name using a previous historical dict, only update when there is app name detected on that display id. use that dict to infer app name only for display 0
+- [x] add config to take screenshot only for display 0 or current focused app, or current focused display
+- [x] make the web ui more responsive, mobile friendly
