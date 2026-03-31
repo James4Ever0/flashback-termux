@@ -1,0 +1,16 @@
+Parsing file: dumpsys_displays.txt
+All active apps:
+[
+    {
+        "display_id": 0,
+        "app": "fr.neamar.kiss/fr.neamar.kiss.MainActivity",
+        "focused": true
+    },
+    {
+        "display_id": 238,
+        "app": "io.gitjournal.gitjournal/.MainActivity",
+        "focused": false
+    }
+]
+Foreground app on display 0: fr.neamar.kiss/fr.neamar.kiss.MainActivity
+App id: fr.neamar.kiss

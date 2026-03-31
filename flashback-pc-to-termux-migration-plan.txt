@@ -1,0 +1,383 @@
+# Flashback PC to Termux Migration Plan
+
+## Overview
+Migrate flashback-screenshots (PC-based screenshot automation) to flashback-termux (Android/Termux-based automation).
+
+## Job 4: Core Rewrite - flashback-termux
+
+### 4.1 Create Directory Structure
+```
+flashback-termux/
+├── flashback_termux/          # Main package (renamed from flashback_screenshots)
+│   ├── __init__.py
+│   ├── config.py              # Updated for Termux paths
+│   ├── screenshot_worker.py   # Termux-specific implementation
+│   ├── window_title_worker.py # Active app detection
+│   ├── server.py              # Web server (may need mobile adaptations)
+│   ├── templates/             # WebUI templates
+│   └── static/                # CSS/JS assets
+├── config.example.json        # Updated config example
+├── pyproject.toml             # Updated package metadata
+├── README.md                  # Updated for Termux
+└── requirements.txt
+```
+
+### 4.2 Screenshot Worker (`screenshot_worker.py`)
+**Replace PC screenshot methods with Termux primitives:**
+
+```python
+from termux_screenshot_workers_primitives import (
+    check_su_available,
+    get_current_user,
+    take_screenshot
+)
+
+class TermuxScreenshotWorker:
+    def __init__(self, output_dir):
+        self.output_dir = output_dir
+        self._check_prerequisites()
+
+    def _check_prerequisites(self):
+        if not check_su_available():
+            raise RuntimeError("Root access (su) required for Termux screenshot worker")
+        # Ensure output directory exists and is writable
+
+    def capture(self, filename=None):
+        """
+        Capture screenshot and save to output_dir.
+
+        Args:
+            filename: Optional filename, otherwise auto-generate with timestamp
+
+        Returns:
+            Path to saved screenshot or None on failure
+        """
+        if filename is None:
+            from datetime import datetime
+            filename = f"screenshot_{datetime.now().strftime('%Y%m%d_%H%M%S')}.png"
+
+        output_path = os.path.join(self.output_dir, filename)
+        success, message = take_screenshot(output_path)
+
+        if success:
+            return output_path
+        else:
+            logger.error(f"Screenshot failed: {message}")
+            return None
+```
+
+### 4.3 Window Title Worker (`window_title_worker.py`)
+**Replace PC window title detection with Android app detection:**
+
+```python
+from termux_screenshot_workers_primitives import (
+    check_su_available,
+    get_active_app_info,
+    get_app_name_by_id
+)
+
+class TermuxWindowTitleWorker:
+    """
+    Detect active Android app for screenshot context.
+
+    Fallback hierarchy:
+    1. Try to get app name from active activity
+    2. If app name is None, use APK ID (package name)
+    3. If all detection fails, return "Unknown"
+    """
+
+    def __init__(self):
+        self._check_prerequisites()
+        self._cache = {}  # Cache app_id -> app_name lookups
+
+    def _check_prerequisites(self):
+        if not check_su_available():
+            raise RuntimeError("Root access (su) required for window title worker")
+
+    def get_current_context(self):
+        """
+        Get current active app context.
+
+        Returns:
+            Dict with keys:
+                - app_name: Human-readable app name or None
+                - app_id: Package name (e.g., "com.android.chrome")
+                - display_title: Final title to use (app_name > app_id > "Unknown")
+        """
+        app_info = get_active_app_info()
+
+        app_id = app_info.get("package", "")
+        activity = app_info.get("activity", "")
+
+        if not app_id:
+            return {
+                "app_name": None,
+                "app_id": None,
+                "display_title": "Unknown",
+                "activity": None
+            }
+
+        # Try to get human-readable app name
+        app_name = self._get_app_name(app_id)
+
+        # Determine display title (fallback hierarchy)
+        if app_name:
+            display_title = app_name
+        else:
+            display_title = app_id  # Use package name as fallback
+
+        return {
+            "app_name": app_name,
+            "app_id": app_id,
+            "display_title": display_title,
+            "activity": activity
+        }
+
+    def _get_app_name(self, app_id):
+        """
+        Get human-readable app name from package ID.
+
+        Uses cache to avoid repeated lookups.
+
+        Args:
+            app_id: Package name (e.g., "com.android.chrome")
+
+        Returns:
+            App name string or None
+        """
+        if app_id in self._cache:
+            return self._cache[app_id]
+
+        app_name = get_app_name_by_id(app_id)
+        self._cache[app_id] = app_name
+        return app_name
+```
+
+### 4.4 Integration Points
+- Replace imports: `flashback_screenshots` -> `flashback_termux`
+- Replace config paths: `~/.config/flashback-screenshots` -> `~/.config/flashback-termux`
+- Replace default screenshot directory: PC Pictures folder -> Termux home or `/sdcard/Pictures/flashback`
+- Add dependency on `termux-screenshot-workers-primitives`
+
+### 4.5 Error Handling Strategy
+- If `check_su_available()` fails on startup: Show clear error message about requiring root
+- If screenshot fails: Log error, continue (don't crash)
+- If app detection fails: Use "Unknown" as context
+- If app name lookup fails: Use app_id as display_title
+
+## Job 5: Configuration and Documentation Updates
+
+### 5.1 pyproject.toml Updates
+```toml
+[project]
+name = "flashback-termux"
+version = "0.1.0"
+description = "Android screenshot automation for Termux with web-based timeline"
+readme = "README.md"
+requires-python = ">=3.8"
+license = {text = "MIT"}
+authors = [
+    {name = "Your Name", email = "your.email@example.com"}
+]
+keywords = ["screenshot", "android", "termux", "timeline", "automation"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: End Users/Desktop",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: Android",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Topic :: Multimedia :: Graphics :: Capture :: Screen Capture",
+]
+
+[project.urls]
+Homepage = "https://github.com/james4ever0/flashback-termux"
+Repository = "https://github.com/james4ever0/flashback-termux"
+Issues = "https://github.com/james4ever0/flashback-termux/issues"
+
+[project.scripts]
+flashback-termux = "flashback_termux.cli:main"
+```
+
+### 5.2 config.example.json Updates
+```json
+{
+  "screenshot_dir": "/data/data/com.termux/files/home/storage/pictures/flashback",
+  "interval_seconds": 60,
+  "webui": {
+    "host": "127.0.0.1",
+    "port": 8080,
+    "mobile_friendly": true
+  },
+  "context_detection": {
+    "enabled": true,
+    "use_app_name": true,
+    "fallback_to_package": true
+  },
+  "retention": {
+    "days": 30
+  }
+}
+```
+
+### 5.3 README.md Structure
+1. **Title**: Flashback Termux - Android Screenshot Timeline
+2. **Description**: What it does (auto-screenshot with context on Android)
+3. **Requirements**:
+   - Termux app (F-Droid version recommended)
+   - Root access (required for screenshots on Android)
+   - Python 3.8+
+   - aapt binary (for app name detection)
+4. **Installation**:
+   - pip install instructions
+   - Setting up storage permissions
+   - Installing aapt
+5. **Configuration**: Copy config.example.json and edit
+6. **Usage**:
+   - Starting the service
+   - Accessing webui on mobile browser
+7. **Differences from PC Version**:
+   - Uses Android app context instead of window titles
+   - Requires root for screenshot capture
+   - Mobile-optimized web interface
+
+## Job 6: Mobile-Friendly WebUI
+
+### 6.1 CSS/Layout Changes
+```css
+/* Add to static/css or inline in templates */
+
+/* Mobile-first responsive design */
+body {
+    margin: 0;
+    padding: 10px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+/* Timeline container */
+.timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 100%;
+}
+
+/* Screenshot card */
+.screenshot-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    background: #fff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Image styling - responsive */
+.screenshot-card img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    display: block;
+}
+
+/* App context info */
+.app-context {
+    font-size: 14px;
+    color: #666;
+    margin-top: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Timestamp */
+.timestamp {
+    font-size: 12px;
+    color: #999;
+}
+
+/* Mobile optimizations */
+@media (max-width: 600px) {
+    body {
+        padding: 5px;
+        font-size: 14px;
+    }
+
+    .screenshot-card {
+        padding: 8px;
+    }
+
+    /* Larger touch targets */
+    button, .nav-link {
+        min-height: 44px;
+        min-width: 44px;
+        padding: 12px 16px;
+    }
+
+    /* Simplify header */
+    .header {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+/* Touch-friendly controls */
+.nav-button {
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 12px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    touch-action: manipulation;
+}
+
+.nav-button:active {
+    background: #0056b3;
+}
+```
+
+### 6.2 Template Changes
+- Add viewport meta tag: `<meta name="viewport" content="width=device-width, initial-scale=1.0">`
+- Use flexbox/grid for layout instead of fixed widths
+- Add swipe gesture support for timeline navigation (optional JS)
+- Collapsible header/nav on mobile
+- Lazy loading for images: `loading="lazy"` attribute
+
+### 6.3 Server-Side Mobile Detection (Optional)
+```python
+# In server.py - detect mobile for template variations
+from flask import request
+
+def is_mobile():
+    user_agent = request.headers.get('User-Agent', '').lower()
+    mobile_keywords = ['android', 'iphone', 'ipad', 'mobile']
+    return any(kw in user_agent for kw in mobile_keywords)
+```
+
+## Implementation Order
+
+1. **Create flashback-termux folder** - Copy from flashback-screenshots as base
+2. **Implement screenshot_worker.py** - Use termux-screenshot-workers-primitives
+3. **Implement window_title_worker.py** - App detection with fallback hierarchy
+4. **Update config handling** - New paths, new options
+5. **Update package metadata** - pyproject.toml, README
+6. **Update webui templates** - Add mobile CSS, viewport meta tag
+7. **Test on device** - Verify all components work together
+
+## Testing Checklist
+
+- [ ] Screenshots save to correct directory
+- [ ] App context shows correct app name
+- [ ] Fallback to package name works when app name unavailable
+- [ ] WebUI loads on mobile browser
+- [ ] Timeline is scrollable on mobile
+- [ ] Images are sized appropriately for mobile screen
+- [ ] Touch controls work (buttons, navigation)
+- [ ] Config file loads correctly
+- [ ] Error messages are clear when su unavailable

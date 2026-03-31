@@ -19,6 +19,7 @@ return None.
 import re
 import sys
 import json
+import subprocess
 
 def extract_app_from_previous_focus_line(line):
     """
@@ -129,34 +130,25 @@ def parse_dumpsys_for_foreground_app(dumpsys_str):
 
 def test():
     """
-    Read a sample dumpsys output from a file and test the parser.
-    Expects a file named 'sample_dumpsys.txt' in the current directory.
+    Run 'su -c dumpsys window displays' and parse the output.
+    Prints the result of parse_dumpsys_for_foreground_app as JSON.
     """
-    filename = 'dumpsys_displays.txt' # this is static.
     try:
-        with open(filename, 'r') as f:
-            content = f.read()
-    except FileNotFoundError:
-        print(f"Test file '{filename}' not found. Please create one with the output of 'adb shell dumpsys window displays'.")
+        result = subprocess.run(
+            ["su", "-c", "dumpsys window displays"],
+            capture_output=True,
+            text=True
+        )
+        if result.returncode != 0:
+            print(f"Error running dumpsys: {result.stderr}", file=sys.stderr)
+            return
+        content = result.stdout
+    except Exception as e:
+        print(f"Failed to run dumpsys command: {e}", file=sys.stderr)
         return
 
-    print(f"Parsing file: {filename}")
     apps = parse_dumpsys_for_foreground_app(content)
-    print("All active apps:")
     print(json.dumps(apps, indent=4, ensure_ascii=False))
-    display_id = 0
-    app = None
-    for it in apps:
-        if it['display_id']== display_id:
-            app = it['app']
-            break
-    if app:
-        print(f"Foreground app on display 0: {app}")
-        # Foreground app on display 0: fr.neamar.kiss/fr.neamar.kiss.MainActivity
-        app_id = app.split("/")[0]
-        print("App id:", app_id)
-    else:
-        print("No foreground app found for display 0.")
 
 
 if __name__ == "__main__":

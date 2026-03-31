@@ -372,17 +372,7 @@ class WindowTitleWorker(IntervalWorker):
         # Config for screenshot target display
         # Options: "focused" (current focused display), "main" (display 0) or specific number (e.g., 0)
         # TODO: add option "all" to capture all displays, and sync with screenshot worker as well with this option.
-        backend = self.config.get("screenshot.backend.enabled", "screencap")
-
-        # Validate target_display compatibility with screencap backend
-        # screencap can only capture display 0 (main display)
-        if backend == "screencap":
-            target_display_config = "main"
-        elif backend == "scrcpy":
-            target_display_config = self.config.get("screenshot.backend.scrcpy.target_display", "main")
-        else:
-            raise RuntimeError("Unsupported screenshot backend:", backend)
-
+        target_display_config = self.config.get("screenshot.target_display", "focused")
         if target_display_config == "focused":
             self._target_display = None  # Track focused display
         elif target_display_config == "main":
@@ -543,7 +533,7 @@ class WindowTitleWorker(IntervalWorker):
         """
         Get human-readable app name from package ID.
 
-        Uses in-memory cache and database history to avoid repeated aapt lookups.
+        Uses cache to avoid repeated lookups via aapt.
 
         Args:
             app_id: Package name (e.g., "com.android.chrome")
@@ -554,25 +544,14 @@ class WindowTitleWorker(IntervalWorker):
         if app_id in self._app_name_cache:
             return self._app_name_cache[app_id]
 
-        # First check database for historical app name
-        try:
-            db_app_name = self.db.get_app_name_from_history(app_id)
-            if db_app_name:
-                self.logger.debug(f"Found {app_id} -> {db_app_name} in database cache")
-                self._app_name_cache[app_id] = db_app_name
-                return db_app_name
-        except Exception as e:
-            self.logger.debug(f"Database lookup failed for {app_id}: {e}")
-
-        # Fall back to aapt lookup
         try:
             app_name = get_app_name_by_id(app_id)
             self._app_name_cache[app_id] = app_name
 
             if app_name:
-                self.logger.debug(f"Resolved {app_id} -> {app_name} via aapt")
+                self.logger.debug(f"Resolved {app_id} -> {app_name}")
             else:
-                self.logger.debug(f"No app name found for {app_id} via aapt")
+                self.logger.debug(f"No app name found for {app_id}, using package name")
 
             return app_name
 

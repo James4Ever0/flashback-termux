@@ -1,0 +1,10 @@
+# Include static files and templates
+recursive-include flashback/api/static *
+recursive-include flashback/api/templates *
+recursive-include flashback/web/static *
+recursive-include flashback/web/templates *
+
+# Exclude compiled Python files
+global-exclude *.pyc
+global-exclude __pycache__
+global-exclude *.so

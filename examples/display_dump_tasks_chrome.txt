@@ -1,0 +1,425 @@
+WINDOW MANAGER DISPLAY CONTENTS (dumpsys window displays)
+  mLastOrientationSource=WindowedMagnification:0:31@51942229
+  deepestLastOrientationSource=ActivityRecord{9f53e0 u0 org.tasks/com.todoroo.astrid.activity.TaskListActivity} t4466}
+  overrideConfig={0.0 ?mcc?mnc ?localeList ?layoutDir sw480dp w480dp h640dp 500dpi lrg port ?uimode ?night -touch -keyb/v/h -nav/h winConfig={ mBounds=Rect(0, 0 - 1500, 2000) mAppBounds=Rect(0, 0 - 1500, 2000) mMaxBounds=Rect(0, 0 - 1500, 2000) mDisplayRotation=ROTATION_0 mWindowingMode=fullscreen mDisplayWindowingMode=fullscreen mActivityType=undefined mAlwaysOnTop=undefined mRotation=ROTATION_0} ?fontWeightAdjustmentmThemeChanged= 0, mThemeChangedFlags= 0, mFlipFont= 0, mAccessibleChanged= 0, mUxIconConfig= 0, mMaterialColor= ffffffffffffffff, mUserId= -1, mFontUserId= -1, mFontVariationSettings= 0, mFoldingAngle = -1.0, mIconPackName= , mDarkModeBackgroundMaxL= -1.0, mDarkModeDialogBgMaxL= -1.0, mDarkModeForegroundMinL= -1.0, mOplusConfigType= 0, mOplusChangedConfigs= 0, OpSans= -1, mBurmeseFontFlag= -1, mFlag= 0, mPuttDisplayFlag= -1}
+  Display: mDisplayId=267 rootTasks=2
+    init=1500x2000 500dpi mMinSizeOfResizeableTaskDp=220 cur=1500x2000 app=1500x2000 rng=1500x1500-2000x2000
+    deferred=false mLayoutNeeded=false mTouchExcludeRegion=SkRegion((0,0,1500,2000))
+
+  mLayoutSeq=28
+  mCurrentFocus=null
+  mFocusedApp=ActivityRecord{9f53e0 u0 org.tasks/com.todoroo.astrid.activity.TaskListActivity} t4466}
+
+  displayId=267
+  mWallpaperTarget=null
+  mLastWallpaperX=-1.0 mLastWallpaperY=-1.0
+
+  mSystemGestureExclusion=SkRegion()
+
+  Display areas in top down Z order:
+    * Leaf:100:100
+    * FullscreenMagnification:61:99
+      * Leaf:61:99
+    * Leaf:60:60
+    * FullscreenMagnification:58:59
+      * Leaf:58:59
+    * Leaf:56:57
+    * FullscreenMagnification:33:55
+      * Leaf:33:55
+    * Leaf:32:32
+    * WindowedMagnification:0:31
+      * FullscreenMagnification:15:31
+        * Leaf:15:31
+      * ImePlaceholder:13:14
+        * ImeContainer
+      * FullscreenMagnification:0:12
+        * Leaf:3:12
+        * DefaultTaskDisplayArea
+        * Leaf:0:1
+
+  Task display areas in top down Z order:
+    TaskDisplayArea DefaultTaskDisplayArea
+      mPreferredTopFocusableRootTask=Task{16a3d5e #4466 type=standard A=10597:org.tasks U=0 visible=true visibleRequested=true mode=fullscreen translucent=false sz=1}
+      mLastFocusedRootTask=Task{16a3d5e #4466 type=standard A=10597:org.tasks U=0 visible=true visibleRequested=true mode=fullscreen translucent=false sz=1}
+      Application tokens in top down Z order:
+      * Task{16a3d5e #4466 type=standard A=10597:org.tasks U=0 visible=true visibleRequested=true mode=fullscreen translucent=false sz=1}
+        bounds=[0,0][1500,2000]
+        * ActivityRecord{9f53e0 u0 org.tasks/com.todoroo.astrid.activity.TaskListActivity} t4466}
+      * Task{eb557b9 #4464 type=home ?? U=0 visible=false visibleRequested=false mode=fullscreen translucent=true sz=1}
+        bounds=[0,0][1500,2000]
+        * Task{fbb4cae #4465 type=home A=10181:com.android.launcher U=0 rootTaskId=4464 visible=false visibleRequested=false mode=fullscreen translucent=true sz=1}
+          bounds=[0,0][1500,2000]
+          * ActivityRecord{efc09ac u0 com.android.launcher/com.android.launcher3.secondarydisplay.SecondaryDisplayLauncher} t4465}
+
+  no ScreenRotationAnimation 
+
+  rootHomeTask=Task=4464
+
+  PinnedTaskController
+    mIsImeShowing=false
+    mImeHeight=0
+    mMinAspectRatio=0.41841003
+    mMaxAspectRatio=2.39
+
+  DisplayFrames w=1500 h=2000 r=0
+
+  DisplayPolicy
+    mCarDockEnablesAccelerometer=true mDeskDockEnablesAccelerometer=true
+    mDockMode=EXTRA_DOCK_STATE_UNDOCKED mLidState=LID_ABSENT
+    mAwake=true mScreenOnEarly=true mScreenOnFully=true
+    mKeyguardDrawComplete=false mWindowManagerDrawComplete=false
+    mHdmiPlugged=false
+    mLastAppearance=LIGHT_NAVIGATION_BARS
+    mLastBehavior=DEFAULT
+    mShowingDream=false mDreamingLockscreen=false
+    isKeyguardShowing=false
+    mNavigationBar=Window{c19cab1 u0 NavigationBar267}
+    mNavBarOpacityMode=0
+    mNavigationBarCanMove=true
+    mNavigationBarPosition=4
+    mTopFullscreenOpaqueWindowState=Window{1b87032 u0 org.tasks/com.todoroo.astrid.activity.TaskListActivity}
+    mNavBarColorWindowCandidate=Window{1b87032 u0 org.tasks/com.todoroo.astrid.activity.TaskListActivity}
+    mNavBarBackgroundWindow=Window{1b87032 u0 org.tasks/com.todoroo.astrid.activity.TaskListActivity}
+    mLastStatusBarAppearanceRegions=
+    mTopIsFullscreen=false
+    mForceShowNavigationBarEnabled=false mAllowLockscreenWhenOn=false
+    mRemoteInsetsControllerControlsSystemBars=false
+    SystemGestures:
+      mDisplayCutoutTouchableRegionSize=38
+      mSwipeStartThreshold=Rect(75, 148 - 75, 75)
+      mSwipeDistanceThreshold=75
+    Looper state:
+      Looper (android.ui, tid 23) {df04ce4}
+        (Total messages: 0, polling=true, quitting=false)
+
+  DisplayRotation
+    mCurrentAppOrientation=SCREEN_ORIENTATION_UNSPECIFIED
+    mLastOrientation=-1
+    mRotation=0 mDeferredRotationPauseCount=0
+    mLandscapeRotation=ROTATION_90 mSeascapeRotation=ROTATION_270
+    mPortraitRotation=ROTATION_0 mUpsideDownRotation=ROTATION_180
+    mSupportAutoRotation=true
+
+    mCarDockRotation=-1 mDeskDockRotation=-1
+    mUserRotationMode=USER_ROTATION_FREE mUserRotation=ROTATION_0 mCameraRotationMode=0 mAllowAllRotations=unknown
+    mDemoHdmiRotation=ROTATION_90 mDemoHdmiRotationLock=false mUndockedHdmiRotation=-1
+    mLidOpenRotation=-1
+    mFixedToUserRotation=false
+
+
+  WindowInsetsStateController
+    InsetsState
+      mDisplayFrame=Rect(0, 0 - 1500, 2000)
+      mDisplayCutout=DisplayCutout{insets=Rect(0, 0 - 0, 0) waterfall=Insets{left=0, top=0, right=0, bottom=0} boundingRect={Bounds=[Rect(0, 0 - 0, 0), Rect(0, 0 - 0, 0), Rect(0, 0 - 0, 0), Rect(0, 0 - 0, 0)]} cutoutPathParserInfo={CutoutPathParserInfo{displayWidth=0 displayHeight=0 physicalDisplayWidth=0 physicalDisplayHeight=0 density={0.0} cutoutSpec={} rotation={0} scale={0.0} physicalPixelDisplaySizeRatio={0.0}}}}
+      mRoundedCorners=RoundedCorners{[RoundedCorner{position=TopLeft, radius=0, center=Point(0, 0)}, RoundedCorner{position=TopRight, radius=0, center=Point(0, 0)}, RoundedCorner{position=BottomRight, radius=0, center=Point(0, 0)}, RoundedCorner{position=BottomLeft, radius=0, center=Point(0, 0)}]}
+      mRoundedCornerFrame=Rect(0, 0 - 0, 0)
+      mPrivacyIndicatorBounds=PrivacyIndicatorBounds {static bounds=null rotation=0}
+        InsetsSource type=ITYPE_NAVIGATION_BAR frame=[0,1950][1500,2000] visible=true insetsRoundedCornerFrame=false
+        InsetsSource type=ITYPE_LEFT_GESTURES frame=[0,0][0,2000] visible=true insetsRoundedCornerFrame=false
+        InsetsSource type=ITYPE_RIGHT_GESTURES frame=[1500,0][1500,2000] visible=true insetsRoundedCornerFrame=false
+        InsetsSource type=ITYPE_BOTTOM_MANDATORY_GESTURES frame=[0,1708][1500,2000] visible=true insetsRoundedCornerFrame=false
+        InsetsSource type=ITYPE_BOTTOM_TAPPABLE_ELEMENT frame=[0,1862][1500,2000] visible=true insetsRoundedCornerFrame=false
+        InsetsSource type=ITYPE_IME frame=[0,0][0,0] visible=false insetsRoundedCornerFrame=false
+    Control map:
+      ITYPE_NAVIGATION_BAR -> Window{1b87032 u0 org.tasks/com.todoroo.astrid.activity.TaskListActivity}
+    InsetsSourceProviders:
+      ImeInsetsSourceProvider
+        mSource=InsetsSource type=ITYPE_IME frame=[0,0][0,0] visible=false insetsRoundedCornerFrame=false
+        mIsLeashReadyForDispatching=true mImeOverrideFrame=[0,0][0,0]
+        mImeShowing=false
+      WindowContainerInsetsSourceProvider
+        mSource=InsetsSource type=ITYPE_BOTTOM_TAPPABLE_ELEMENT frame=[0,1862][1500,2000] visible=true insetsRoundedCornerFrame=false
+        mIsLeashReadyForDispatching=true mImeOverrideFrame=[0,0][0,0]
+        mWindowContainer=Window{c19cab1 u0 NavigationBar267}
+      WindowContainerInsetsSourceProvider
+        mSource=InsetsSource type=ITYPE_BOTTOM_MANDATORY_GESTURES frame=[0,1708][1500,2000] visible=true insetsRoundedCornerFrame=false
+        mIsLeashReadyForDispatching=true mImeOverrideFrame=[0,0][0,0]
+        mWindowContainer=Window{c19cab1 u0 NavigationBar267}
+      WindowContainerInsetsSourceProvider
+        mSource=InsetsSource type=ITYPE_RIGHT_GESTURES frame=[1500,0][1500,2000] visible=true insetsRoundedCornerFrame=false
+        mIsLeashReadyForDispatching=true mImeOverrideFrame=[0,0][0,0]
+        mWindowContainer=Window{c19cab1 u0 NavigationBar267}
+      WindowContainerInsetsSourceProvider
+        mSource=InsetsSource type=ITYPE_LEFT_GESTURES frame=[0,0][0,2000] visible=true insetsRoundedCornerFrame=false
+        mIsLeashReadyForDispatching=true mImeOverrideFrame=[0,0][0,0]
+        mWindowContainer=Window{c19cab1 u0 NavigationBar267}
+      WindowContainerInsetsSourceProvider
+        mSource=InsetsSource type=ITYPE_NAVIGATION_BAR frame=[0,1950][1500,2000] visible=true insetsRoundedCornerFrame=false
+        mControl=InsetsSourceControl type=ITYPE_NAVIGATION_BAR mLeash=Surface(name=Surface(name=c19cab1 NavigationBar267)/@0xdea25a3 - animation-leash of insets_animation)/@0xefe558f mSurfacePosition=Point(0, 1862) mInsetsHint=Insets{left=0, top=0, right=0, bottom=50} mSkipAnimationOnce=false
+        mIsLeashReadyForDispatching=true mImeOverrideFrame=[0,1950][1500,2000]
+        mWindowContainer=Window{c19cab1 u0 NavigationBar267}
+        mAdapter=ControlAdapter mCapturedLeash=Surface(name=Surface(name=c19cab1 NavigationBar267)/@0xdea25a3 - animation-leash of insets_animation)/@0xefe558f
+        mControlTarget=Window{1b87032 u0 org.tasks/com.todoroo.astrid.activity.TaskListActivity}
+    mNextAppTransitionRequests=[], mNextAppTransitionFlags=
+    mAppTransitionState=APP_STATE_IDLE
+    mLastUsedAppTransition=TRANSIT_OLD_TASK_OPEN
+    mLastOpeningApp=ActivityRecord{9f53e0 u0 org.tasks/com.todoroo.astrid.activity.TaskListActivity} t4466}
+    mLastClosingApp=null
+    mLastChangingApp=null
+  mLastOrientationSource=WindowedMagnification:0:31@212622543
+  deepestLastOrientationSource=ActivityRecord{f6550ef u0 com.android.chrome/com.google.android.apps.chrome.Main} t4463}
+  overrideConfig={1.0 ??mcc??mnc [en_US,ja_US,zh_CN_#Hans] ldltr sw354dp w354dp h744dp 560dpi nrml long widecg port night finger -keyb/v/h -nav/h winConfig={ mBounds=Rect(0, 0 - 1240, 2772) mAppBounds=Rect(0, 110 - 1240, 2716) mMaxBounds=Rect(0, 0 - 1240, 2772) mDisplayRotation=ROTATION_0 mWindowingMode=fullscreen mDisplayWindowingMode=fullscreen mActivityType=undefined mAlwaysOnTop=undefined mRotation=ROTATION_0} as.2 s.82461 fontWeightAdjustment=0mThemeChanged= 0, mThemeChangedFlags= 0, mFlipFont= 0, mAccessibleChanged= -1, mUxIconConfig= 3470610514986926113, mMaterialColor= 0, mUserId= 0, mFontUserId= 0, mFontVariationSettings= 226, mFoldingAngle = -1.0, mIconPackName= , mDarkModeBackgroundMaxL= 0.0, mDarkModeDialogBgMaxL= 27.0, mDarkModeForegroundMinL= 100.0, mOplusConfigType= 1, mOplusChangedConfigs= 0, OpSans= 0, mBurmeseFontFlag= 2, mFlag= 0, mPuttDisplayFlag= -1}
+  Display: mDisplayId=0 rootTasks=5
+    init=1240x2772 560dpi mMinSizeOfResizeableTaskDp=220 cur=1240x2772 app=1240x2606 rng=1240x1074-2662x2606
+    deferred=false mLayoutNeeded=false mTouchExcludeRegion=SkRegion((0,0,1240,2772))
+
+  mLayoutSeq=1452511
+  mCurrentFocus=Window{f50bfd5 u0 com.android.chrome/com.google.android.apps.chrome.Main}
+  mFocusedApp=ActivityRecord{f6550ef u0 com.android.chrome/com.google.android.apps.chrome.Main} t4463}
+
+  displayId=0
+  mWallpaperTarget=null
+  mLastWallpaperX=-1.0 mLastWallpaperY=-1.0
+
+  mSystemGestureExclusion=SkRegion()
+
+  Display areas in top down Z order:
+    * Leaf:100:100
+    * HideDisplayCutout:58:99
+      * OneHanded:67:99
+        * FullscreenMagnification:67:99
+          * Leaf:67:99
+      * FullscreenMagnification:66:66
+        * Leaf:66:66
+      * OneHanded:58:65
+        * FullscreenMagnification:61:65
+          * Leaf:61:65
+        * Leaf:60:60
+        * FullscreenMagnification:58:59
+          * Leaf:58:59
+    * Leaf:56:57
+    * HideDisplayCutout:32:55
+      * OneHanded:32:55
+        * FullscreenMagnification:33:55
+          * Leaf:33:55
+        * Leaf:32:32
+    * WindowedMagnification:0:31
+      * HideDisplayCutout:18:31
+        * OneHanded:18:31
+          * FullscreenMagnification:18:31
+            * Leaf:18:31
+      * OneHanded:17:17
+        * FullscreenMagnification:17:17
+          * Leaf:17:17
+      * HideDisplayCutout:16:16
+        * OneHanded:16:16
+          * FullscreenMagnification:16:16
+            * Leaf:16:16
+      * OneHanded:15:15
+        * FullscreenMagnification:15:15
+          * Leaf:15:15
+      * HideDisplayCutout:0:14
+        * OneHanded:0:14
+          * ImePlaceholder:13:14
+            * ImeContainer
+          * FullscreenMagnification:0:12
+            * Leaf:3:12
+            * DefaultTaskDisplayArea
+            * Leaf:0:1
+
+  Task display areas in top down Z order:
+    TaskDisplayArea DefaultTaskDisplayArea
+      mPreferredTopFocusableRootTask=Task{c580e85 #4463 type=standard A=10136:com.android.chrome U=0 visible=true visibleRequested=true mode=fullscreen translucent=false sz=1}
+      mLastFocusedRootTask=Task{c580e85 #4463 type=standard A=10136:com.android.chrome U=0 visible=true visibleRequested=true mode=fullscreen translucent=false sz=1}
+      Application tokens in top down Z order:
+      * Task{c580e85 #4463 type=standard A=10136:com.android.chrome U=0 visible=true visibleRequested=true mode=fullscreen translucent=false sz=1}
+        bounds=[0,0][1240,2772]
+        * ActivityRecord{f6550ef u0 com.android.chrome/com.google.android.apps.chrome.Main} t4463}
+      * Task{74c433d #1 type=home ?? U=0 visible=false visibleRequested=false mode=fullscreen translucent=true sz=1}
+        bounds=[0,0][1240,2772]
+        * Task{b881ef7 #918 type=home A=10606:fr.neamar.kiss U=0 rootTaskId=1 visible=false visibleRequested=false mode=fullscreen translucent=true sz=1}
+          bounds=[0,0][1240,2772]
+          * ActivityRecord{a31ee15 u0 fr.neamar.kiss/.MainActivity} t918}
+      * Task{72f1f2c #919 type=recents ?? U=0 visible=false visibleRequested=false mode=fullscreen translucent=true sz=1}
+        bounds=[0,0][1240,2772]
+        * Task{99583f3 #920 type=recents I=com.android.launcher/com.android.quickstep.RecentsActivity U=0 rootTaskId=919 visible=false visibleRequested=false mode=fullscreen translucent=true sz=1}
+          bounds=[0,0][1240,2772]
+          * ActivityRecord{31fd300 u0 com.android.launcher/com.android.quickstep.RecentsActivity} t920}
+      * Task{13d053e #1184 type=undefined ?? U=0 visible=false visibleRequested=false mode=fullscreen translucent=true sz=0}
+        bounds=[0,0][1240,2772]
+      * Task{a884f9f #1185 type=undefined ?? U=0 visible=false visibleRequested=false mode=fullscreen translucent=true sz=2}
+        bounds=[0,0][1240,2772]
+        * Task{64864b5 #1187 type=undefined ?? U=0 rootTaskId=1185 visible=false visibleRequested=false mode=multi-window translucent=true sz=0}
+          bounds=[0,0][1240,2772]
+        * Task{84688ec #1186 type=undefined ?? U=0 rootTaskId=1185 visible=false visibleRequested=false mode=multi-window translucent=true sz=0}
+          bounds=[0,0][1240,2772]
+
+  no ScreenRotationAnimation 
+
+  rootHomeTask=Task=1
+  rootRecentsTask=Task=919
+
+  PinnedTaskController
+    mIsImeShowing=false
+    mImeHeight=0
+    mMinAspectRatio=0.41841003
+    mMaxAspectRatio=2.39
+
+  DisplayFrames w=1240 h=2772 r=0
+
+  DisplayPolicy
+    mCarDockEnablesAccelerometer=true mDeskDockEnablesAccelerometer=true
+    mDockMode=EXTRA_DOCK_STATE_UNDOCKED mLidState=LID_ABSENT
+    mAwake=true mScreenOnEarly=true mScreenOnFully=true
+    mKeyguardDrawComplete=true mWindowManagerDrawComplete=true
+    mHdmiPlugged=false
+    mLastBehavior=DEFAULT
+    mShowingDream=false mDreamingLockscreen=false
+    mStatusBar=Window{ee43ec3 u0 StatusBar}
+    mExpandedPanel=Window{c45c728 u0 NotificationShade}
+    isKeyguardShowing=false
+    mNavigationBar=Window{985605f u0 NavigationBar0}
+    mNavBarOpacityMode=2
+    mNavigationBarCanMove=false
+    mNavigationBarPosition=4
+    mFocusedWindow=Window{f50bfd5 u0 com.android.chrome/com.google.android.apps.chrome.Main}
+    mTopFullscreenOpaqueWindowState=Window{f50bfd5 u0 com.android.chrome/com.google.android.apps.chrome.Main}
+    mNavBarColorWindowCandidate=Window{f50bfd5 u0 com.android.chrome/com.google.android.apps.chrome.Main}
+    mNavBarBackgroundWindow=Window{f50bfd5 u0 com.android.chrome/com.google.android.apps.chrome.Main}
+    mLastStatusBarAppearanceRegions=
+      AppearanceRegion{ bounds=[0,0][1240,2772]}
+    mStatusBarBackgroundWindows=
+      Window{f50bfd5 u0 com.android.chrome/com.google.android.apps.chrome.Main}
+    mTopIsFullscreen=false
+    mForceShowNavigationBarEnabled=false mAllowLockscreenWhenOn=false
+    mRemoteInsetsControllerControlsSystemBars=false
+    SystemGestures:
+      mDisplayCutoutTouchableRegionSize=42
+      mSwipeStartThreshold=Rect(84, 152 - 84, 84)
+      mSwipeDistanceThreshold=84
+    Looper state:
+      Looper (android.ui, tid 23) {df04ce4}
+        (Total messages: 0, polling=true, quitting=false)
+
+  DisplayRotation
+    mCurrentAppOrientation=SCREEN_ORIENTATION_UNSPECIFIED
+    mLastOrientation=-1
+    mRotation=0 mDeferredRotationPauseCount=0
+    mLandscapeRotation=ROTATION_90 mSeascapeRotation=ROTATION_270
+    mPortraitRotation=ROTATION_0 mUpsideDownRotation=ROTATION_180
+    mSupportAutoRotation=true
+    WindowOrientationListener
+      mEnabled=true
+      mCurrentRotation=ROTATION_0
+      mSensorType=null
+      mSensor={Sensor name="dev_orient", vendor="mtk", version=1, type=27, maxRange=3.0, resolution=1.0, power=0.001, minDelay=0}
+      mRate=2
+      OrientationSensorJudge
+        mDesiredRotation=ROTATION_180
+        mProposedRotation=ROTATION_180
+        mTouching=false
+        mTouchEndedTimestampNanos=3288107514611493
+        mLastRotationResolution=2
+
+    mCarDockRotation=-1 mDeskDockRotation=-1
+    mUserRotationMode=USER_ROTATION_LOCKED mUserRotation=ROTATION_0 mCameraRotationMode=0 mAllowAllRotations=false
+    mDemoHdmiRotation=ROTATION_90 mDemoHdmiRotationLock=false mUndockedHdmiRotation=-1
+    mLidOpenRotation=-1
+    mFixedToUserRotation=false
+
+    RotationHistory
+      03-25 22:23:23.818 ROTATION_270 to ROTATION_90
+        source=ActivityRecord{f5c07be u0 tv.danmaku.bili/com.bilibili.ship.theseus.detail.UnitedBizDetailsActivity} t4410} SCREEN_ORIENTATION_LANDSCAPE
+        mode=USER_ROTATION_LOCKED user=ROTATION_0 sensor=-1
+      03-25 22:30:43.209 ROTATION_90 to ROTATION_270
+        source=ActivityRecord{f5c07be u0 tv.danmaku.bili/com.bilibili.ship.theseus.detail.UnitedBizDetailsActivity} t4410} SCREEN_ORIENTATION_REVERSE_LANDSCAPE
+        mode=USER_ROTATION_LOCKED user=ROTATION_0 sensor=ROTATION_270
+      03-25 22:30:44.837 ROTATION_270 to ROTATION_90
+        source=ActivityRecord{f5c07be u0 tv.danmaku.bili/com.bilibili.ship.theseus.detail.UnitedBizDetailsActivity} t4410} SCREEN_ORIENTATION_LANDSCAPE
+        mode=USER_ROTATION_LOCKED user=ROTATION_0 sensor=ROTATION_90
+      03-25 22:33:54.996 ROTATION_90 to ROTATION_0
+        source=ActivityRecord{f5c07be u0 tv.danmaku.bili/com.bilibili.ship.theseus.detail.UnitedBizDetailsActivity} t4410} SCREEN_ORIENTATION_PORTRAIT
+        mode=USER_ROTATION_LOCKED user=ROTATION_0 sensor=ROTATION_90
+      03-25 22:46:12.808 ROTATION_0 to ROTATION_90
+        source=ActivityRecord{2af1025 u0 tv.danmaku.bili/com.bilibili.ship.theseus.detail.UnitedBizDetailsActivity} t4410} SCREEN_ORIENTATION_LANDSCAPE
+        mode=USER_ROTATION_LOCKED user=ROTATION_0 sensor=ROTATION_0
+      03-25 22:56:00.095 ROTATION_90 to ROTATION_0
+        source=ActivityRecord{2af1025 u0 tv.danmaku.bili/com.bilibili.ship.theseus.detail.UnitedBizDetailsActivity} t4410} SCREEN_ORIENTATION_PORTRAIT
+        mode=USER_ROTATION_LOCKED user=ROTATION_0 sensor=ROTATION_90
+      03-26 08:28:13.109 ROTATION_0 to ROTATION_90
+        source=ActivityRecord{67ba7b7 u0 tv.danmaku.bili/com.bilibili.ship.theseus.detail.UnitedBizDetailsActivity} t4419} SCREEN_ORIENTATION_LANDSCAPE
+        mode=USER_ROTATION_LOCKED user=ROTATION_0 sensor=ROTATION_0
+      03-26 08:28:35.758 ROTATION_90 to ROTATION_0
+        source=ActivityRecord{67ba7b7 u0 tv.danmaku.bili/com.bilibili.ship.theseus.detail.UnitedBizDetailsActivity} t4419} SCREEN_ORIENTATION_PORTRAIT
+        mode=USER_ROTATION_LOCKED user=ROTATION_0 sensor=ROTATION_90
+
+  InputConsumers:
+    name=recents_animation_input_consumer pid=2682 user=UserHandle{0}
+
+  WindowInsetsStateController
+    InsetsState
+      mDisplayFrame=Rect(0, 0 - 1240, 2772)
+      mDisplayCutout=DisplayCutout{insets=Rect(0, 110 - 0, 0) waterfall=Insets{left=0, top=0, right=0, bottom=0} boundingRect={Bounds=[Rect(0, 0 - 0, 0), Rect(582, 0 - 658, 110), Rect(0, 0 - 0, 0), Rect(0, 0 - 0, 0)]} cutoutPathParserInfo={CutoutPathParserInfo{displayWidth=1240 displayHeight=2772 physicalDisplayWidth=1240 physicalDisplayHeight=2772 density={3.5} cutoutSpec={M -38,0 L -38,110 L 38,110 L 38,0 Z} rotation={0} scale={1.0} physicalPixelDisplaySizeRatio={1.0}}}}
+      mRoundedCorners=RoundedCorners{[RoundedCorner{position=TopLeft, radius=0, center=Point(0, 0)}, RoundedCorner{position=TopRight, radius=0, center=Point(0, 0)}, RoundedCorner{position=BottomRight, radius=0, center=Point(0, 0)}, RoundedCorner{position=BottomLeft, radius=0, center=Point(0, 0)}]}
+      mRoundedCornerFrame=Rect(0, 0 - 0, 0)
+      mPrivacyIndicatorBounds=PrivacyIndicatorBounds {static bounds=Rect(974, 0 - 1254, 110) rotation=0}
+        InsetsSource type=ITYPE_STATUS_BAR frame=[0,0][1240,110] visible=true insetsRoundedCornerFrame=false
+        InsetsSource type=ITYPE_NAVIGATION_BAR frame=[0,2716][1240,2772] visible=true insetsRoundedCornerFrame=false
+        InsetsSource type=ITYPE_LEFT_GESTURES frame=[0,0][105,2772] visible=true insetsRoundedCornerFrame=false
+        InsetsSource type=ITYPE_RIGHT_GESTURES frame=[1135,0][1240,2772] visible=true insetsRoundedCornerFrame=false
+        InsetsSource type=ITYPE_TOP_MANDATORY_GESTURES frame=[0,0][1240,152] visible=true insetsRoundedCornerFrame=false
+        InsetsSource type=ITYPE_BOTTOM_MANDATORY_GESTURES frame=[0,2660][1240,2772] visible=true insetsRoundedCornerFrame=false
+        InsetsSource type=ITYPE_LEFT_DISPLAY_CUTOUT frame=[0,0][-100000,2772] visible=true insetsRoundedCornerFrame=false
+        InsetsSource type=ITYPE_TOP_DISPLAY_CUTOUT frame=[0,0][1240,110] visible=true insetsRoundedCornerFrame=false
+        InsetsSource type=ITYPE_RIGHT_DISPLAY_CUTOUT frame=[100000,0][1240,2772] visible=true insetsRoundedCornerFrame=false
+        InsetsSource type=ITYPE_BOTTOM_DISPLAY_CUTOUT frame=[0,100000][1240,2772] visible=true insetsRoundedCornerFrame=false
+        InsetsSource type=ITYPE_TOP_TAPPABLE_ELEMENT frame=[0,0][1240,110] visible=true insetsRoundedCornerFrame=false
+        InsetsSource type=ITYPE_BOTTOM_TAPPABLE_ELEMENT frame=[0,0][0,0] visible=true insetsRoundedCornerFrame=false
+        InsetsSource type=ITYPE_IME frame=[0,0][0,0] visible=false insetsRoundedCornerFrame=false
+    Control map:
+      ITYPE_IME -> Window{f50bfd5 u0 com.android.chrome/com.google.android.apps.chrome.Main}
+      ITYPE_NAVIGATION_BAR -> Window{f50bfd5 u0 com.android.chrome/com.google.android.apps.chrome.Main}
+      ITYPE_STATUS_BAR -> Window{f50bfd5 u0 com.android.chrome/com.google.android.apps.chrome.Main}
+    InsetsSourceProviders:
+      ImeInsetsSourceProvider
+        mSource=InsetsSource type=ITYPE_IME frame=[0,0][0,0] visible=false insetsRoundedCornerFrame=false
+        mControl=InsetsSourceControl type=ITYPE_IME mLeash=Surface(name=Surface(name=f4e8e84 InputMethod)/@0x457f2a2 - animation-leash of insets_animation)/@0x93dc1f0 mSurfacePosition=Point(0, 2650) mInsetsHint=Insets{left=0, top=0, right=0, bottom=56} mSkipAnimationOnce=false
+        mIsLeashReadyForDispatching=true mImeOverrideFrame=[0,0][0,0]
+        mWindowContainer=Window{f4e8e84 u0 InputMethod}
+        mAdapter=ControlAdapter mCapturedLeash=Surface(name=Surface(name=f4e8e84 InputMethod)/@0x457f2a2 - animation-leash of insets_animation)/@0x93dc1f0
+        mControlTarget=Window{f50bfd5 u0 com.android.chrome/com.google.android.apps.chrome.Main}
+        mImeShowing=false
+      WindowContainerInsetsSourceProvider
+        mSource=InsetsSource type=ITYPE_BOTTOM_TAPPABLE_ELEMENT frame=[0,0][0,0] visible=true insetsRoundedCornerFrame=false
+        mIsLeashReadyForDispatching=true mImeOverrideFrame=[0,0][0,0]
+        mWindowContainer=Window{985605f u0 NavigationBar0}
+      WindowContainerInsetsSourceProvider
+        mSource=InsetsSource type=ITYPE_TOP_TAPPABLE_ELEMENT frame=[0,0][1240,110] visible=true insetsRoundedCornerFrame=false
+        mIsLeashReadyForDispatching=true mImeOverrideFrame=[0,0][0,0]
+        mWindowContainer=Window{ee43ec3 u0 StatusBar}
+      WindowContainerInsetsSourceProvider
+        mSource=InsetsSource type=ITYPE_BOTTOM_MANDATORY_GESTURES frame=[0,2660][1240,2772] visible=true insetsRoundedCornerFrame=false
+        mIsLeashReadyForDispatching=true mImeOverrideFrame=[0,0][0,0]
+        mWindowContainer=Window{985605f u0 NavigationBar0}
+      WindowContainerInsetsSourceProvider
+        mSource=InsetsSource type=ITYPE_TOP_MANDATORY_GESTURES frame=[0,0][1240,152] visible=true insetsRoundedCornerFrame=false
+        mIsLeashReadyForDispatching=true mImeOverrideFrame=[0,0][0,0]
+        mWindowContainer=Window{ee43ec3 u0 StatusBar}
+      WindowContainerInsetsSourceProvider
+        mSource=InsetsSource type=ITYPE_RIGHT_GESTURES frame=[1135,0][1240,2772] visible=true insetsRoundedCornerFrame=false
+        mIsLeashReadyForDispatching=true mImeOverrideFrame=[0,0][0,0]
+        mWindowContainer=Window{985605f u0 NavigationBar0}
+      WindowContainerInsetsSourceProvider
+        mSource=InsetsSource type=ITYPE_LEFT_GESTURES frame=[0,0][105,2772] visible=true insetsRoundedCornerFrame=false
+        mIsLeashReadyForDispatching=true mImeOverrideFrame=[0,0][0,0]
+        mWindowContainer=Window{985605f u0 NavigationBar0}
+      WindowContainerInsetsSourceProvider
+        mSource=InsetsSource type=ITYPE_NAVIGATION_BAR frame=[0,2716][1240,2772] visible=true insetsRoundedCornerFrame=false
+        mControl=InsetsSourceControl type=ITYPE_NAVIGATION_BAR mLeash=Surface(name=Surface(name=985605f NavigationBar0)/@0xc141791 - animation-leash of insets_animation)/@0xbf6301c mSurfacePosition=Point(0, 2618) mInsetsHint=Insets{left=0, top=0, right=0, bottom=56} mSkipAnimationOnce=false
+        mIsLeashReadyForDispatching=true mImeOverrideFrame=[0,2716][1240,2772]
+        mWindowContainer=Window{985605f u0 NavigationBar0}
+        mAdapter=ControlAdapter mCapturedLeash=Surface(name=Surface(name=985605f NavigationBar0)/@0xc141791 - animation-leash of insets_animation)/@0xbf6301c
+        mControlTarget=Window{f50bfd5 u0 com.android.chrome/com.google.android.apps.chrome.Main}
+      WindowContainerInsetsSourceProvider
+        mSource=InsetsSource type=ITYPE_STATUS_BAR frame=[0,0][1240,110] visible=true insetsRoundedCornerFrame=false
+        mControl=InsetsSourceControl type=ITYPE_STATUS_BAR mLeash=Surface(name=Surface(name=ee43ec3 StatusBar)/@0xd29522a - animation-leash of insets_animation)/@0xc233425 mSurfacePosition=Point(0, 0) mInsetsHint=Insets{left=0, top=110, right=0, bottom=0} mSkipAnimationOnce=false
+        mIsLeashReadyForDispatching=true mImeOverrideFrame=[0,0][0,0]
+        mWindowContainer=Window{ee43ec3 u0 StatusBar}
+        mAdapter=ControlAdapter mCapturedLeash=Surface(name=Surface(name=ee43ec3 StatusBar)/@0xd29522a - animation-leash of insets_animation)/@0xc233425
+        mControlTarget=Window{f50bfd5 u0 com.android.chrome/com.google.android.apps.chrome.Main}
+    mNextAppTransitionRequests=[], mNextAppTransitionFlags=
+    mAppTransitionState=APP_STATE_IDLE
+    mLastUsedAppTransition=TRANSIT_OLD_TASK_OPEN
+    mLastOpeningApp=ActivityRecord{f6550ef u0 com.android.chrome/com.google.android.apps.chrome.Main} t4463}
+    mLastClosingApp=ActivityRecord{a31ee15 u0 fr.neamar.kiss/.MainActivity} t918}
+    mLastChangingApp=null

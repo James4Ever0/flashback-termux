@@ -1,0 +1,279 @@
+# Flashback Configuration
+#
+# Config file search order (first found wins):
+#   1. $FLASHBACK_CONFIG environment variable (if set and file exists)
+#   2. ./config.yaml (current directory)
+#   3. ~/.config/flashback/config.yaml (user config directory)
+#
+# To use a custom location:
+#   export FLASHBACK_CONFIG=/path/to/your/config.yaml
+
+# Data storage paths
+data_dir: ~/.local/share/flashback
+
+# Screenshot settings
+screenshot:
+  enabled: true
+  interval_seconds: 60
+  quality: 85
+  formats: ["png"]
+  # Screenshot backend for Android/Termux
+  # Uses Android's screencap binary via su to capture screenshots
+  # Note: Screenshots require root access (su) on Android/Termux
+  backend:
+    enabled: "screencap"
+    # screencap only supports main display
+    screencap: {}
+    scrcpy:
+      # target_display can be "focused" or "main"
+      target_display: "focused"
+
+# Worker configuration
+workers:
+  screenshot:
+    enabled: true
+
+  ocr:
+    enabled: true
+    work_interval_seconds: 1
+    batch_size: 5
+    # Tesseract language packs to use
+    # Download language data files from: https://github.com/tesseract-ocr/tessdata
+    # Place .traineddata files in: /data/data/com.termux/files/usr/share/tessdata
+    #
+    # Example (download English and Chinese Simplified):
+    #   mkdir -p /data/data/com.termux/files/usr/share/tessdata
+    #   cd /data/data/com.termux/files/usr/share/tessdata
+    #   curl -L -o eng.traineddata https://github.com/tesseract-ocr/tessdata/raw/main/eng.traineddata
+    #   curl -L -o chi_sim.traineddata https://github.com/tesseract-ocr/tessdata/raw/main/chi_sim.traineddata
+    languages: ["eng", "chi_sim"]
+
+  embedding:
+    enabled: true
+    work_interval_seconds: 1
+    batch_size: 3
+
+    # Embedding mode: text-only, image-only, text-image-hybrid
+    # - text-only: Only indexes text from OCR content
+    # - image-only: Only indexes image pixels (requires vision-capable model)
+    # - text-image-hybrid: Indexes both separately (most accurate, slower)
+    mode: "text-image-hybrid"
+
+    # TEXT EMBEDDING CONFIGURATION
+    # Requires an OpenAI-compatible embedding API
+    text:
+      base_url: "https://api.openai.com/v1"  # or "http://localhost:11434/v1" for Ollama
+      api_key: "${OPENAI_API_KEY}"  # Environment variable substitution supported
+      model: "text-embedding-3-small"
+      dimension: null  # Auto-detected via: flashback config test-embedding --type text --write
+      extra_headers: {}
+
+    # IMAGE EMBEDDING CONFIGURATION
+    # Requires a vision-capable model that supports image embeddings
+    image:
+      base_url: "http://localhost:11434/v1"  # Ollama default
+      api_key: ""  # Often empty for local APIs
+      model: "llava"  # Vision-capable model (llava, bakllava, etc.)
+      dimension: null  # Auto-detected via: flashback config test-embedding --type image --write
+      extra_headers: {}
+
+    # Hybrid search weights (only used in text-image-hybrid mode)
+    hybrid_weights:
+      text_weight: 0.5
+      image_weight: 0.5
+      rrf_k: 60
+
+  cleanup:
+    enabled: true
+    check_interval_seconds: 3600
+    retention_days: 7
+
+  # Window title worker captures the active app context with each screenshot
+  # This helps you identify which Android app was active when the screenshot was taken.
+  #
+  # How it works:
+  #   - The worker polls the active Android app every poll_interval_seconds using dumpsys
+  #   - When the app changes, it finds the most recent screenshot without a window title
+  #   - If that screenshot was taken within max_screenshot_age_seconds, it updates it
+  #   - This prevents updating old screenshots when you switch apps long after capture
+  #
+  # Requirements:
+  #   - Root access (su) is required to query the active app on Android
+  #   - Optional: aapt binary for resolving app names from package IDs
+  #
+  # If su is not available, the window title worker will fail to start, but other
+  # workers (screenshot, OCR) will still function normally.
+  window_title:
+    enabled: true
+    poll_interval_seconds: 1
+    max_screenshot_age_seconds: 30  # Only associate with screenshots taken within this time
+
+# Search configuration
+search:
+  enabled_methods:
+    bm25: true
+    text_embedding: true
+    image_embedding: true
+
+  bm25:
+    k1: 1.5
+    b: 0.75
+    default_limit: 50
+
+    # BM25 index refresh interval (seconds)
+    # The BM25 index is rebuilt periodically in the background to include new screenshots.
+    # Lower values = fresher results but more CPU usage. Higher values = better performance.
+    refresh_interval_seconds: 600  # Default: 10 minutes
+
+    # Tokenizer backend configuration
+    # Backend options:
+    #   "jieba"  - Use jieba for Chinese/English segmentation (default, recommended)
+    #   "spacy"  - Use spaCy for multilingual tokenization
+    #   "simple" - Use regex [a-zA-Z0-9]+ (fast, ASCII only)
+    #   "auto"   - Detect language and use appropriate tokenizer
+    tokenizer:
+      backend: "jieba"
+
+      # For auto mode: threshold to detect Chinese text
+      # If >70% Chinese characters, uses jieba; otherwise spacy
+      language_confidence_threshold: 0.7
+
+      # Jieba-specific settings
+      jieba:
+        # Mode: "accurate" (default), "full" (all possible words), "search"
+        mode: "accurate"
+
+      # Spacy-specific settings
+      # For more models, visit: https://spacy.io/models
+      spacy:
+        model: "en_core_web_sm"  # Options: en_core_web_sm, zh_core_web_sm, etc.
+        auto_download: true       # Download model if missing
+
+  text_embedding:
+    default_limit: 50
+
+  image_embedding:
+    default_limit: 50
+
+  # Search modes define how different search methods are combined
+  # Available modes:
+  #   bm25_only            - BM25 text search only
+  #   text_embedding_only  - Text embedding search only
+  #   text_hybrid          - BM25 + text embedding fusion (default)
+  #   image_embedding_only - Image similarity search (requires image query)
+  #   text_to_image        - Text query for image search (requires CLIP-like model)
+  #   text_and_image       - Query with both text and image
+  #   comprehensive        - BM25 + text + image fusion
+  search_modes:
+    bm25_only:
+      description: "BM25 text search only"
+      inputs: ["text"]
+      methods:
+        bm25: { weight: 1.0 }
+
+    text_embedding_only:
+      description: "Text embedding search only"
+      inputs: ["text"]
+      methods:
+        text_embedding: { weight: 1.0 }
+
+    text_hybrid:
+      description: "BM25 + text embedding fusion"
+      inputs: ["text"]
+      methods:
+        bm25: { weight: 0.3 }
+        text_embedding: { weight: 0.7 }
+      fusion: reciprocal_rank
+      rrf_k: 60
+
+    image_embedding_only:
+      description: "Image embedding search only"
+      inputs: ["image"]
+      methods:
+        image_embedding: { weight: 1.0 }
+
+    text_to_image:
+      description: "Search images using text query (requires CLIP-like model)"
+      inputs: ["text"]
+      methods:
+        image_embedding: { weight: 1.0 }
+
+    text_and_image:
+      description: "Query with both text and image"
+      inputs: ["text", "image"]
+      methods:
+        text_embedding: { weight: 0.5 }
+        image_embedding: { weight: 0.5 }
+      fusion: reciprocal_rank
+      rrf_k: 60
+
+    comprehensive:
+      description: "BM25 + text embedding + image embedding"
+      inputs: ["text", "image"]
+      methods:
+        bm25: { weight: 0.2 }
+        text_embedding: { weight: 0.4 }
+        image_embedding: { weight: 0.4 }
+      fusion: reciprocal_rank
+      rrf_k: 60
+
+  default_search_mode: "text_hybrid"
+
+# Web UI configuration
+webui:
+  enabled: true
+  host: "127.0.0.1"
+  port: 8080
+
+  # Maximum age for "latest screenshot" endpoint (seconds)
+  # If the latest screenshot is older than this limit, the /api/v1/screenshots/now endpoint
+  # will return 404. This helps detect if the screenshot worker has stopped.
+  latest_screenshot_age_limit_seconds: 120  # Default: 2 minutes
+
+# Feature flags
+features:
+  ocr: auto
+  embedding_search: auto
+  semantic_search: auto
+
+# Image viewer configuration
+viewer:
+  command: xdg-open  # macOS: open, Windows: start
+  args: ["{path}"]
+
+# Logging configuration
+logging:
+  # Global log level: DEBUG, INFO, WARNING, ERROR, CRITICAL
+  level: INFO
+
+  # Console output settings
+  console:
+    enabled: true
+    level: INFO              # Can be different from global level
+    format: "rich"           # Options: rich, simple, detailed
+    colors: true             # ANSI colors (disable for pipes/files)
+    show_time: true          # Show timestamp in console
+    show_location: false     # Show file:line in console (verbose)
+
+  # File output settings
+  file:
+    enabled: false           # Enable to log to file
+    level: DEBUG             # Usually more verbose than console
+    path: "~/.local/share/flashback/flashback.log"
+    max_size: "10MB"         # Rotate when exceeds size
+    max_files: 5             # Number of rotated files to keep
+    format: "detailed"       # Always detailed for files
+
+  # Module-specific overrides (fine-grained control)
+  # modules:
+  #   workers.screenshot: INFO
+  #   workers.ocr: WARNING
+  #   workers.embedding: DEBUG
+  #   api.server: INFO
+  #   database: WARNING
+
+  # Tracing options (for debugging)
+  trace_calls: false         # Log function entry/exit
+  trace_loops: false         # Log worker loop iterations
+  trace_sql: false           # Log database queries
+  trace_api: false           # Log API requests/responses

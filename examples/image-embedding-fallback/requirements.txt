@@ -1,0 +1,9 @@
+# Image Embedding Fallback Server Dependencies
+# Install with: pip install -r requirements.txt
+
+fastapi>=0.100.0
+uvicorn>=0.23.0
+httpx>=0.24.0
+pillow>=10.0.0
+numpy>=1.24.0
+pydantic>=2.0.0

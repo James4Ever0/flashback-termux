@@ -4,3 +4,8 @@
 - [x] infer unknown app name using a previous historical dict, only update when there is app name detected on that display id. use that dict to infer app name only for display 0
 - [x] add config to take screenshot only for display 0 or current focused app, or current focused display
 - [x] make the web ui more responsive, mobile friendly
+- [x] make each screenshot in webview mobile display at least 2 photos per row, since we are browsing on mobile phone, and make buttons small on top.
+- [x] make desktop view to view full size of the screenshot in current page height and width, since it could be vertical.
+- [ ] since we cannot take screenshot in those virtual displays, and dumpsys SurfaceFlinger --display-id shows display 0 only, we might want to disable the "focused" option, only leave "main" mode as the only option. (since you use scrcpy and swm to spawn the virtual display, maybe you should work with swm codebase instead, record history of your interactions and provide webui for searching it? or run scrcpy-server with root permission in termux and communicate with it?)
+- [x] create a global cache in worker window title fetcher, if an app name is known using app id in the database, skip copy apk and use aapt to detect its name, just use the database fetched result.
+- [x] check beforehand worker launches, if capture target display is focused or all, and capture backend is screencap (not scrcpy), then stop the entire  screenshot worker since it is invalid. maybe stop all workers would be more reasonable? only if screenshot backend is enabled?
